@@ -1,0 +1,12 @@
+button:focus {
+    outline: 0;
+}
+
+.navbar .dropdown-menu .form-control {
+    width: 200px;
+}
+
+.btn-google{
+    color: #fff;
+    background-color:#d14836;
+}
