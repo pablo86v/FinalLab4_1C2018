@@ -1,14 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
-
-import { PrincipalComponent } from './principal/principal.component';
 import { RouterModule, Routes }       from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; 
+
+//Componentes
+import { PrincipalComponent } from './principal/principal.component';
 import { MyNavBarComponent } from './my-nav-bar/my-nav-bar.component';
+import { ViajesComponent } from './viajes/viajes.component';
+
+//Servicios
+import {ViajesService} from './servicios/viajes.service';
+
 
 const appRoutes: Routes = [
-  { path: 'main'                , component: PrincipalComponent },
+  { path: 'home'                , component: PrincipalComponent },
+  { path: 'viajes'              , component: ViajesComponent },
   { path: '**'                  , component: PrincipalComponent }
 ];
 
@@ -17,13 +24,20 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     PrincipalComponent,
-    MyNavBarComponent
+    MyNavBarComponent,
+    ViajesComponent
+  ],
+  exports: [
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    HttpClientModule,
+    ViajesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
