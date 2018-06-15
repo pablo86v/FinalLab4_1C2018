@@ -10,7 +10,7 @@ import { Viaje } from '../entidades/viajes';
 })
 export class ViajesComponent implements OnInit {
 
-  public viajes : any [];
+  public aViajes : Viaje [];
 
   constructor(public viajeService : ViajesService) { }
 
@@ -19,8 +19,14 @@ export class ViajesComponent implements OnInit {
   }
 
   getViajes(): void{
-
-     this.viajeService.getViajes().subscribe(data => console.log(data))
+     this.viajeService.getViajes().subscribe(
+      data => this.aViajes = data,
+      err => console.error(err),
+      () => console.log(this.aViajes)
+    )
   }
 
+
+
+  
 }

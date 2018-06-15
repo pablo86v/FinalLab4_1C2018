@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class ViajesService {
 
   public viajes : Viaje[];
-  public apiURL = "http://pablovalenzuela.esy.es/lab4/api/usuarios";
+  public apiURL = "http://pablovalenzuela.esy.es/lab4/api/viajes";
 
   constructor(public http : HttpClient) { }
 
