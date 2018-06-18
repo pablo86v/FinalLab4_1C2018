@@ -2,26 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { ViajesService } from '../servicios/viajes.service';
 import { Viaje } from '../entidades/viajes';
 
-
 @Component({
-  selector: 'app-viajes',
-  templateUrl: './viajes.component.html',
-  styleUrls: ['./viajes.component.css']
+  selector: 'app-viajes-clientes',
+  templateUrl: './viajes-clientes.component.html',
+  styleUrls: ['./viajes-clientes.component.css']
 })
-export class ViajesComponent implements OnInit {
+export class ViajesClientesComponent implements OnInit {
+
 
   public aViajes : Viaje [];
 
-  constructor(public viajeService : ViajesService) {
-  
-  }
-
+  constructor(public viajeService : ViajesService) { }
 
   ngOnInit() {
     this.getViajes();
-
   }
-
 
   getViajes(): void{
      this.viajeService.getViajes().subscribe(
@@ -31,16 +26,4 @@ export class ViajesComponent implements OnInit {
     )
   }
 
-
-
-  test(){
-    alert("ok");
-  }
-
-
-  
-
-  
 }
-
-

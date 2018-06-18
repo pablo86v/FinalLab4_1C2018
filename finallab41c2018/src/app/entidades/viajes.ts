@@ -5,16 +5,18 @@ import { Injectable } from '@angular/core';
   })
 
 export class Viaje{
-    private idViaje          :  number;
-    private idVehiculo       :  number;
-    private idCliente        :  number;
-    private domicilioOrig    :	string;  
-    private domicilioDest    :  string;
-    private coordenadasOrig  :  string;
-    private coordenadasDest  :  string;
-    private monto		     :  string;
-    private fechaViaje       :  string;
-    private medioPago        :  string;
+    public idViaje          :  number;
+    public idVehiculo       :  number;
+    public idCliente        :  number;
+    public domicilioOrig    :	string;  
+    public domicilioDest    :  string;
+    public coordenadasOrig  :  string;
+    public coordenadasDest  :  string;
+    public monto		     :  string;
+    public estado		     :  string;
+    public fechaViaje       :  string;
+    public medioPago        :  string;
+
 
     constructor(
                 parIdViaje        	:  number,
@@ -25,19 +27,21 @@ export class Viaje{
                 parCoordenadasOrig	:  string,
                 parCoordenadasDest	:  string,
                 parMonto		    :  string, 	
+                parEstado		    :  string, 	
                 parFechaViaje       :  string,
                 parMedioPago        :  string
                 ){
-        this.idViaje        	=  parIdViaje        
-        this.idVehiculo     	=  parIdVehiculo     
-        this.idCliente          =  parIdCliente      
-        this.domicilioOrig      =  parDomicilioOrig  
-        this.domicilioDest      =  parDomicilioDest  
-        this.coordenadasOrig    =  parCoordenadasOrig
-        this.coordenadasDest    =  parCoordenadasDest
-        this.monto		        =  parMonto		   
-        this.fechaViaje         =  parFechaViaje     
-        this.medioPago          =  parMedioPago       
+        this.idViaje        	=  parIdViaje          ;
+        this.idVehiculo     	=  parIdVehiculo       ;
+        this.idCliente          =  parIdCliente        ; 
+        this.domicilioOrig      =  parDomicilioOrig    ;
+        this.domicilioDest      =  parDomicilioDest    ;
+        this.coordenadasOrig    =  parCoordenadasOrig  ;
+        this.coordenadasDest    =  parCoordenadasDest  ;
+        this.monto		        =  parMonto		       ;
+        this.estado		        =  parEstado	       ;
+        this.fechaViaje         =  parFechaViaje       ;
+        this.medioPago          =  parMedioPago        ;
     }//constructor
 
 

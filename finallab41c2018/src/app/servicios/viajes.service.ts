@@ -18,7 +18,7 @@ export class ViajesService {
   getViajes() : Observable<Viaje[]> {
     return this.http.get<Viaje[]>(this.apiURL)
     .pipe(
-      tap(heroes => this.log("fetched data")),
+      tap(data => this.log("fetched data: " + data)),
       catchError(this.handleError('getViajes', []))
     );
 

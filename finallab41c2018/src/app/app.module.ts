@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes }       from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; 
 
+
 //Componentes
 import { PrincipalComponent } from './principal/principal.component';
 import { MyNavBarComponent } from './my-nav-bar/my-nav-bar.component';
@@ -11,10 +12,12 @@ import { ViajesComponent } from './viajes/viajes.component';
 
 //Servicios
 import {ViajesService} from './servicios/viajes.service';
+import { ViajesClientesComponent } from './viajes-clientes/viajes-clientes.component';
 
 
 const appRoutes: Routes = [
   { path: 'home'                , component: PrincipalComponent },
+  { path: 'viajes-clientes'     , component: ViajesClientesComponent },
   { path: 'viajes'              , component: ViajesComponent },
   { path: '**'                  , component: PrincipalComponent }
 ];
@@ -25,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     PrincipalComponent,
     MyNavBarComponent,
-    ViajesComponent
+    ViajesComponent,
+    ViajesClientesComponent
   ],
   exports: [
     HttpClientModule
