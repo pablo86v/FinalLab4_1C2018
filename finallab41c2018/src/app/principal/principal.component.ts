@@ -12,4 +12,8 @@ export class PrincipalComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  test(){
+    alert("ok");
+  }
 }

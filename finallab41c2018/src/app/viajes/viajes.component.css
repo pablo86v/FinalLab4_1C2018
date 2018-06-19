@@ -1,11 +1,11 @@
-.col-border {
-    /* border-style: solid; */
-    border-width: 1px
+.row {
+    padding: .40rem;
+    vertical-align: top;
 }
-
 .row-header{
     background : #343a40;
-    color: white;
+    color: white;   
+
 }
 
 .row-border {
@@ -14,15 +14,26 @@
     border-color: #343a40;
 }
 
-.btn-position{
-    width: 60% ; 
-    margin-bottom:2px;
-    margin-top:2px;
-}
 
 .row-child:nth-child(odd) {
     background-color:#f2f2f2;
+
 }
 .row-child:nth-child(even) {
     background-color:#fbfbfb;
+
+}
+
+.col-border {
+    /* border-style: solid; */
+    border-width: 1px;
+}
+
+.col-btn-asignar{
+    margin-left: 0px !important;
+    padding-left: 0px !important;   
+}
+
+.btn-link{
+    padding-top:0px!important;
 }

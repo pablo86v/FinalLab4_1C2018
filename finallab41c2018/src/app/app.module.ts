@@ -13,6 +13,7 @@ import { ViajesComponent } from './viajes/viajes.component';
 //Servicios
 import {ViajesService} from './servicios/viajes.service';
 import { ViajesClientesComponent } from './viajes-clientes/viajes-clientes.component';
+import { ModalElegirVehiculoComponent } from './modal-elegir-vehiculo/modal-elegir-vehiculo.component';
 
 
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     PrincipalComponent,
     MyNavBarComponent,
     ViajesComponent,
-    ViajesClientesComponent
+    ViajesClientesComponent,
+    ModalElegirVehiculoComponent
   ],
   exports: [
     HttpClientModule

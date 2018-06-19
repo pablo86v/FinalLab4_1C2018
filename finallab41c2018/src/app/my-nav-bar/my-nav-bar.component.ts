@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router }       from '@angular/router';
 
 @Component({
   selector: 'app-my-nav-bar',
@@ -11,9 +11,15 @@ export class MyNavBarComponent implements OnInit {
 
   userType : string ;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  goTo(page){
+ 
+    // this.router.navigate([page], { queryParams: { page: 1 } });
+    this.router.navigate([page]);
   }
 
 }

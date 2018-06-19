@@ -1,5 +1,5 @@
-DELIMITER $$
-CREATE PROCEDURE restoreDB () 
+DROP PROCEDURE IF EXISTS restoreDB$$
+CREATE PROCEDURE restoreDB( )
 BEGIN
 	drop table if exists tbUsuarios;
 	drop table if exists tbEmpleados;
@@ -62,7 +62,8 @@ BEGIN
 		idViaje        	   int(6) unsigned auto_increment primary key,
 		idVehiculo         int  	    not null, 
 		idCliente          int          not null,
-		estado             varchar(15)   not null,  
+		comodidades        varchar(20)  null ,  -- cantPuertas;utilitario;aireAcondicionado
+		estado             varchar(15)  not null,  
 		domicilioOrig      varchar(50)  not null,
 		domicilioDest      varchar(50)  not null,
 		coordenadasOrig    varchar(80)  not null,
@@ -71,16 +72,16 @@ BEGIN
 		fechaViaje         varchar(10)  not null, -- formato  dd/mm/aaaa
 		medioPago          varchar(2)   null  -- EF efectivo  o  CC cuenta corriente 
 	);
-	insert into tbViajes values (1,1,1,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (2,2,1,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","29/05/2018","CC");
-	insert into tbViajes values (3,1,1,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","30/05/2018","CC");
-	insert into tbViajes values (4,2,1,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","31/05/2018","CC");
-	insert into tbViajes values (5,2,1,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","01/06/2018","CC");
-	insert into tbViajes values (6,2,2,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","02/06/2018","CC");
-	insert into tbViajes values (7,2,2,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
-	insert into tbViajes values (8,1,2,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","05/06/2018","CC");
-	insert into tbViajes values (9,1,2,"Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","06/06/2018","CC");
-	insert into tbViajes values (10,1,2,"Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977", "0" ,"30/06/2018","");
+	insert into tbViajes values (1,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (2,2,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","29/05/2018","CC");
+	insert into tbViajes values (3,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","30/05/2018","CC");
+	insert into tbViajes values (4,2,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","31/05/2018","CC");
+	insert into tbViajes values (5,2,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","01/06/2018","CC");
+	insert into tbViajes values (6,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","02/06/2018","CC");
+	insert into tbViajes values (7,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
+	insert into tbViajes values (8,1,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","05/06/2018","CC");
+	insert into tbViajes values (9,1,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","06/06/2018","CC");
+	insert into tbViajes values (10,1,2,"5;no;si","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977", "0" ,"30/06/2018","");
 	
 	
 	
@@ -104,14 +105,13 @@ BEGIN
 		anio               varchar(4)   null,
 		color              varchar(20)  not null, -- utilizar enumerados en F.E
 		dominio            varchar (20) not null, -- chapa patente
-		cantPuertas        int(4)       not null,
+		cantPuertas        int(4)       not null, -- 3 o 5
 		utilitario         varchar(2)   not null, -- si/no
 		aireAcondicionado  varchar(2)   not null  -- si/no
 	);
 	insert into tbVehiculos values (1,2,"Renault Clio","2014","BL","OLF 948",5,"NO","SI");
 	insert into tbVehiculos values (2,3,"Renault Kangoo","2016","NE","PAK 455",4,"SI","NO");
+	
+END$$
 
-	
-	
-	
-END
+DELIMITER ;

@@ -10,7 +10,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class ViajesService {
 
   public viajes : Viaje[];
-  public apiURL = "http://pablovalenzuela.esy.es/lab4/api/viajes";
+  // public apiURL = "http://pablovalenzuela.esy.es/lab4/api/viajes";
+  public apiURL = "http://localhost/api/viajes";
 
   constructor(public http : HttpClient) { }
 
@@ -18,7 +19,7 @@ export class ViajesService {
   getViajes() : Observable<Viaje[]> {
     return this.http.get<Viaje[]>(this.apiURL)
     .pipe(
-      tap(data => this.log("fetched data: " + data)),
+      tap(data => this.log("fetched data")),
       catchError(this.handleError('getViajes', []))
     );
 
