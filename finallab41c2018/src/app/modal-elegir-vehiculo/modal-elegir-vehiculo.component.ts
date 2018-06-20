@@ -16,6 +16,8 @@ export class ModalElegirVehiculoComponent implements OnInit {
 
   txtPuertas :string  ;
   chkUtilitario : boolean = false;
+  chkUtilitarioDisabled :boolean = true;
+  chkAireAcondDisabled :boolean = true;
   chkAireAcond :boolean = false;
 
   constructor() {   
@@ -38,10 +40,8 @@ export class ModalElegirVehiculoComponent implements OnInit {
     aComodidades[2]=="si"? this.chkAireAcond = true : this.chkAireAcond = false;
     
     if (this.seleccionable){
-      let a = document.getElementById("myChkUtilitario");
-      a.removeAttribute("disabled");
-      a = document.getElementById("myChkAireAcond");
-      a.removeAttribute("disabled");
+      this.chkUtilitarioDisabled= false;
+      this.chkAireAcondDisabled=false;
     }
 
   }

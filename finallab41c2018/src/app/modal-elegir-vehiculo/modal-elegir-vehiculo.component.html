@@ -15,7 +15,7 @@
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <input type="checkbox" id="myChkUtilitario" [checked]="chkUtilitario" (change)="chkUtilitario = !chkUtilitario" disabled>
+              <input type="checkbox"  [checked]="chkUtilitario" (change)="chkUtilitario = !chkUtilitario" [disabled]="chkUtilitarioDisabled">
             </div>
           </div>
           <input type="text" class="form-control" placeholder="Camioneta/utilitario" disabled style="background-color: white; opacity: 1;">
@@ -24,11 +24,11 @@
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <input type="checkbox" id="myChkAireAcond" [checked]="chkAireAcond" (change)="chkAireAcond = !chkAireAcond" disabled>
+              <input type="checkbox"   [checked]="chkAireAcond" (change)="chkAireAcond = !chkAireAcond" [disabled]="chkAireAcondDisabled">
             </div>
           </div>
           <input type="text" class="form-control" placeholder="Aire Acondicionado" disabled style="background-color: white; opacity: 1;">
-        </div>
+        </div>  
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -47,7 +47,7 @@
       <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
         <button class="btn btn-primary" (click)="confirmar()">Confirmar</button>
-      </div>
+      </div> 
     </div>
   </div>
 </div>

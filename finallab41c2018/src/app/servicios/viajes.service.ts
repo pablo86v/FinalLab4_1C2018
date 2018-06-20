@@ -11,13 +11,13 @@ export class ViajesService {
 
   public viajes : Viaje[];
   // public apiURL = "http://pablovalenzuela.esy.es/lab4/api/";
-  public apiURL = "http://localhost/api/";
+  public apiURL = "http://localhost/lab4/api/viajes/";
 
   constructor(public http : HttpClient) { }
 
 
   getViajes() : Observable<Viaje[]> {
-    return this.http.get<Viaje[]>(this.apiURL +'viajes')
+    return this.http.get<Viaje[]>(this.apiURL +'traer')
     .pipe(
       tap(data => this.log("viajes")),
       catchError(this.handleError('getViajes', []))
@@ -27,7 +27,7 @@ export class ViajesService {
 
 
   getVistaViajes() : Observable<any[]> {
-    return this.http.get<any[]>(this.apiURL +'vista-viajes')
+    return this.http.get<any[]>(this.apiURL +'traer-vista')
     .pipe(
       tap(data => this.log("vista-viajes")),
       catchError(this.handleError('getViajes', []))
@@ -36,8 +36,9 @@ export class ViajesService {
   }
 
   getOne(id) : Observable<Viaje> {
-    return this.http.get<any>(this.apiURL +'un-viaje'+'?id='+id)
+    return this.http.get<any>(this.apiURL +'traer-uno/'+id)
     .pipe(
+      // map(data=>data.json()),
       tap(data => this.log("un-viaje")),
       catchError(this.handleError('getViajes', []))
     );

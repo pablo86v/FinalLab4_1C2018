@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes }       from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; 
-
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 //Componentes
 import { PrincipalComponent } from './principal/principal.component';
@@ -38,10 +39,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    HttpClientModule,
     ViajesService
   ],
   bootstrap: [AppComponent]

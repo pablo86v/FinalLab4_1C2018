@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
 
-    <a class="navbar-brand" routerLink="/home">Home</a>
+    <a class="navbar-brand" routerLink="/home">   <img src="assets/logo.png" alt="" height="38" width="38" ></a>
     <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
         &#9776;
     </button>
@@ -35,13 +35,13 @@
                             </div>
                             or
                             <div class="form-group">
-                                <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="email" required="">
+                                <input id="emailInput" name="emailInput"  [(ngModel)]="emailInput" placeholder="Email" class="form-control form-control-sm" type="email" required="" >
                             </div>
                             <div class="form-group">
-                                <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="">
+                                <input id="passwordInput" name="passwordInput" [(ngModel)]="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="" >
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn  btn-block">Login</button>
+                                <button type="submit" class="btn  btn-block"  (click)="login()">Login</button>
                             </div>
                             <div class="form-group text-center">
                                 <small>

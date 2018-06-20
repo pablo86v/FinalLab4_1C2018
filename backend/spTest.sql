@@ -1,0 +1,10 @@
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS test$$
+CREATE PROCEDURE test( )
+BEGIN
+    select "test ok";
+	
+END$$
+
+DELIMITER ;

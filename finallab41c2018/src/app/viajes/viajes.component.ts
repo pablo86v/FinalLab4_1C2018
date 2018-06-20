@@ -43,8 +43,6 @@ export class ViajesComponent implements OnInit {
    )
   }
 
-
-
   // Dado el bindeo desde el modal hacia el objeto, este metodo dispara el ngOnChanges() del modal.
   setObjViaje(idViaje){
      this.viajeService.getOne(idViaje).subscribe(
