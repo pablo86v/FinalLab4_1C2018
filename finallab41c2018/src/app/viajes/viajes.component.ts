@@ -13,6 +13,8 @@ declare var $;
 export class ViajesComponent implements OnInit {
 
   public aViajes : Viaje [];
+  public aItems : any[];
+  public objViaje : Viaje;
 
   constructor(public viajeService : ViajesService,private route: ActivatedRoute) {
 
@@ -20,12 +22,13 @@ export class ViajesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getParams();
-    this.getViajes();
+    // this.getParams();
+    this.getVistaViajes();
+    // this.getViajes();
+
   }
 
-
-
+  // consulta la lista de viajes 
   getViajes(): void{
      this.viajeService.getViajes().subscribe(
       data => this.aViajes = data,
@@ -33,16 +36,33 @@ export class ViajesComponent implements OnInit {
     )
   }
 
-
-getParams(){
-  this.route.queryParams.subscribe(
-    params =>  console.log(params.page)
-  );
-
-}
-
+  getVistaViajes(): void{
+    this.viajeService.getVistaViajes().subscribe(
+     data => this.aItems = data,
+     err => console.error(err)
+   )
+  }
 
 
+
+  // Dado el bindeo desde el modal hacia el objeto, este metodo dispara el ngOnChanges() del modal.
+  setObjViaje(idViaje){
+     this.viajeService.getOne(idViaje).subscribe(
+       data => {
+          this.objViaje = data;
+          console.info(this.objViaje);
+       },
+       err => console.error(err)
+     )
+  }
+
+  //recupero params recibidos por queryString
+  getParams(){
+    this.route.queryParams.subscribe(
+      params =>  console.log(params.page)
+    );
+
+  }
 
   test(){
     alert("ok");
@@ -52,6 +72,6 @@ getParams(){
 
 
   
-}
+}//class
 
 

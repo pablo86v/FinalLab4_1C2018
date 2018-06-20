@@ -1,5 +1,7 @@
+DELIMITER $$
+
 DROP PROCEDURE IF EXISTS restoreDB$$
-CREATE PROCEDURE restoreDB( )
+CREATE PROCEDURE restoreDB()
 BEGIN
 	drop table if exists tbUsuarios;
 	drop table if exists tbEmpleados;
@@ -60,7 +62,7 @@ BEGIN
 	-- ****************************************** VIAJES *********************************************************
 	create table tbViajes (
 		idViaje        	   int(6) unsigned auto_increment primary key,
-		idVehiculo         int  	    not null, 
+		idVehiculo         int  	    null, 
 		idCliente          int          not null,
 		comodidades        varchar(20)  null ,  -- cantPuertas;utilitario;aireAcondicionado
 		estado             varchar(15)  not null,  
@@ -79,9 +81,9 @@ BEGIN
 	insert into tbViajes values (5,2,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","01/06/2018","CC");
 	insert into tbViajes values (6,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","02/06/2018","CC");
 	insert into tbViajes values (7,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
-	insert into tbViajes values (8,1,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","05/06/2018","CC");
-	insert into tbViajes values (9,1,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","06/06/2018","CC");
-	insert into tbViajes values (10,1,2,"5;no;si","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977", "0" ,"30/06/2018","");
+	insert into tbViajes values (8,null,2,"3;si;no","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","05/06/2018","CC");
+	insert into tbViajes values (9,null,2,"","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","06/06/2018","CC");
+	insert into tbViajes values (10,null,2,"5;no;si","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977", "0" ,"30/06/2018","");
 	
 	
 	

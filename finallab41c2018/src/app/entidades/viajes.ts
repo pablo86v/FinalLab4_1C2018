@@ -8,6 +8,7 @@ export class Viaje{
     public idViaje          :  number;
     public idVehiculo       :  number;
     public idCliente        :  number;
+    public comodidades      :  string;
     public domicilioOrig    :	string;  
     public domicilioDest    :  string;
     public coordenadasOrig  :  string;
@@ -16,12 +17,14 @@ export class Viaje{
     public estado		     :  string;
     public fechaViaje       :  string;
     public medioPago        :  string;
+  
 
 
     constructor(
                 parIdViaje        	:  number,
                 parIdVehiculo     	:  number,
                 parIdCliente      	:  number,
+                parComodidades      :  string,
                 parDomicilioOrig  	:  string,
                 parDomicilioDest  	:  string,
                 parCoordenadasOrig	:  string,
@@ -34,6 +37,7 @@ export class Viaje{
         this.idViaje        	=  parIdViaje          ;
         this.idVehiculo     	=  parIdVehiculo       ;
         this.idCliente          =  parIdCliente        ; 
+        this.comodidades        =  parComodidades      ;
         this.domicilioOrig      =  parDomicilioOrig    ;
         this.domicilioDest      =  parDomicilioDest    ;
         this.coordenadasOrig    =  parCoordenadasOrig  ;

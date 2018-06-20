@@ -1,53 +1,53 @@
-   <!-- **************************************************** 
+<!-- **************************************************** 
                  MODAL CON DETALLE DEL VEHICULO 
          **************************************************** -->
+<div align="center" id="modalVehiculo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 align="center" >Vehículo</h3>
+        <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <p *ngIf="seleccionable==true">Comodidades del vehículo</p>
+        <p *ngIf="seleccionable==false">Preferencias del cliente</p>
 
-         <div align="center" id="modalVehiculo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" >
-                        <h3 align="center">Selección de vehículo</h3>
-                        <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body" >
-                        <p>Comodidades del vehículo</p>
-    
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text">
-                                <input type="checkbox"  >
-                              </div>
-                            </div>
-                            <input type="text" class="form-control"   placeholder="Camioneta/utilitario" disabled style="background-color: white; opacity: 1;">
-                          </div>
-                        
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                  <input type="checkbox"  >
-                                </div>
-                              </div>
-                              <input type="text" class="form-control"   placeholder="Aire Acondicionado" disabled style="background-color: white; opacity: 1;">
-                            </div>
-    
-    
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Puertas</button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" (click)="setCantPuertas('3')" >3 puertas</a>
-                                <a class="dropdown-item" (click)="setCantPuertas('5')">5 puertas</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" (click)="setCantPuertas('Indistinto')" >Indistinto</a>
-                              </div>
-                            </div>
-                            <input type="text" class="form-control"   placeholder='{{txtPuertas}}' disabled style="background-color: white; opacity: 1;">
-                          </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                        <button class="btn btn-primary">Confirmar</button>
-                    </div>
-                </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input type="checkbox" id="myChkUtilitario" [checked]="chkUtilitario" (change)="chkUtilitario = !chkUtilitario" disabled>
             </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Camioneta/utilitario" disabled style="background-color: white; opacity: 1;">
         </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input type="checkbox" id="myChkAireAcond" [checked]="chkAireAcond" (change)="chkAireAcond = !chkAireAcond" disabled>
+            </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Aire Acondicionado" disabled style="background-color: white; opacity: 1;">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              *ngIf="seleccionable==true">Puertas</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" (click)="setCantPuertas('3')">3 puertas</a>
+              <a class="dropdown-item" (click)="setCantPuertas('5')">5 puertas</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="setCantPuertas('Indistinto')">Indistinto</a>
+            </div>
+          </div>
+          <input type="text" class="form-control" placeholder='{{txtPuertas}}' disabled style="background-color: white; opacity: 1;">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+        <button class="btn btn-primary" (click)="confirmar()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,20 +10,46 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class ViajesService {
 
   public viajes : Viaje[];
-  // public apiURL = "http://pablovalenzuela.esy.es/lab4/api/viajes";
-  public apiURL = "http://localhost/api/viajes";
+  // public apiURL = "http://pablovalenzuela.esy.es/lab4/api/";
+  public apiURL = "http://localhost/api/";
 
   constructor(public http : HttpClient) { }
 
 
   getViajes() : Observable<Viaje[]> {
-    return this.http.get<Viaje[]>(this.apiURL)
+    return this.http.get<Viaje[]>(this.apiURL +'viajes')
     .pipe(
-      tap(data => this.log("fetched data")),
+      tap(data => this.log("viajes")),
       catchError(this.handleError('getViajes', []))
     );
 
   }
+
+
+  getVistaViajes() : Observable<any[]> {
+    return this.http.get<any[]>(this.apiURL +'vista-viajes')
+    .pipe(
+      tap(data => this.log("vista-viajes")),
+      catchError(this.handleError('getViajes', []))
+    );
+
+  }
+
+  getOne(id) : Observable<Viaje> {
+    return this.http.get<any>(this.apiURL +'un-viaje'+'?id='+id)
+    .pipe(
+      tap(data => this.log("un-viaje")),
+      catchError(this.handleError('getViajes', []))
+    );
+
+  }
+
+
+
+
+
+
+
 
 
   private handleError<T> (operation = 'operation', result?: T) {
