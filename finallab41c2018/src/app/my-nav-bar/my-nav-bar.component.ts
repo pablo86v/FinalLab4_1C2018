@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../servicios/usuario.service';
 import { HttpModule } from '@angular/http';
+declare var $;
+
 
 @Component({
   selector: 'app-my-nav-bar',
@@ -21,24 +23,16 @@ export class MyNavBarComponent implements OnInit {
     private usuarioService: UsuarioService) { }
 
   ngOnInit() {
+  
   }
 
   goTo(page){
- 
-    // this.router.navigate([page], { queryParams: { page: 1 } });
+     // this.router.navigate([page], { queryParams: { page: 1 } });
     this.router.navigate([page]);
   }
 
 
-  onKey(event: any) { // without type info
-    // console.log( event);
-  }
-
- test(){
-   console.log(this.emailInput);
- }
-
-  public login()
+  public login(event : any)
   {
     // this.mostrarSpinner = true;
 
@@ -47,12 +41,13 @@ export class MyNavBarComponent implements OnInit {
       {
         console.log(data);
         this.router.navigate(['home']);
+      
       }
     ).add(()=>
     {
       // this.mostrarSpinner = false;
       // this.forma.reset();
-
+     
     })
   }
 
