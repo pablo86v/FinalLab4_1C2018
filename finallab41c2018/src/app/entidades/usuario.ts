@@ -13,7 +13,7 @@ export class Usuario{
     public usuario      : string;
     public password     : string;
     public domicilio    : string;
-    public tipoUsuario  : string;
+    public tipo  : string;
     
 
     constructor(
@@ -33,7 +33,7 @@ export class Usuario{
         this.usuario      = parUsuario        ;
         this.password     = parPassword       ;
         this.domicilio    = parDomicilio      ;
-        this.tipoUsuario  = parTipoUsuario    ;
+        this.tipo         = parTipoUsuario    ;
     }
 
 }

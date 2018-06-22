@@ -10,3 +10,8 @@ button:focus {
     color: #fff;
     background-color:#d14836;
 }
+
+
+.btn-link{
+    color:#ffffffbf;
+}

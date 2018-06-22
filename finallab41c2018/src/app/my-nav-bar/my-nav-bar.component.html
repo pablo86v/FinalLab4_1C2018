@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
 
-    <a class="navbar-brand" routerLink="/home">   <img src="assets/logo.png" alt="" height="38" width="38" ></a>
+    <a class="navbar-brand" routerLink="/home">
+        <img src="assets/logo.png" alt="" height="38" width="38">
+    </a>
     <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
         &#9776;
     </button>
@@ -12,69 +14,83 @@
             <li class="nav-item">
                 <a routerLink="/tarifas" class="nav-link">Tarifas</a>
             </li>
-            <li class="nav-item" *ngIf="userType!='CL'">
+            <li class="nav-item" *ngIf="userType=='CH' || userType == 'EN'">
                 <a routerLink="/viajes" class="nav-link">Viajes</a>
             </li>
-            <li class="nav-item" *ngIf="userType!='CL'">
+            <li class="nav-item" *ngIf="userType=='CL'">
                 <a routerLink="/viajes-clientes" class="nav-link">Mis Viajes</a>
             </li>
         </ul>
         <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-
-            <li class="dropdown order-1">
-                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Login
-                    <span class="caret"></span>
-                </button>
-                <ul id="loginForm" class="dropdown-menu dropdown-menu-right mt-2">
-                    <li class="px-3 py-2">
-                        <form class="form" role="form">
-                            Login via
-                            <div class="social-buttons">
-                                <a routerLink="/home" class="btn btn-block btn-google">
-                                    <i class="fab fa-google"></i> Google</a>
-                            </div>
-                            or
-                            <div class="form-group">
-                                <input id="emailInput" name="emailInput"  [(ngModel)]="emailInput" placeholder="Email" class="form-control form-control-sm" type="email" required="" >
-                            </div>
-                            <div class="form-group">
-                                <input id="passwordInput" name="passwordInput" [(ngModel)]="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="" >
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn  btn-block" (click)="login($event)" >Login</button>
-                            </div>
-                            <div class="form-group text-center">
-                                <small>
-                                    <a href="#" data-toggle="modal" data-target="#modalPassword">Olvidó su clave?</a>
-                                </small>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
+            <li class="nav-item">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalPassword">{{labelUsuario}}</button>
             </li>
             <li class="nav-item order-2 order-md-1">
-                <a href="#" class="nav-link" title="settings">
-                    <i class="fa fa-cog fa-fw fa-lg"></i>
-                </a>
+                <div class="dropdown">
+                    <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown">
+                        <i class="fa fa-cog fa-fw fa-lg"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
 
 </nav>
 
-<div id="modalPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<!-- ***************************************************************************************************************** 
+     ******************************************** MODAL DE LOGIN  **************************************************** 
+     ***************************************************************************************************************** -->
+
+<div id="modalPassword" class="modal modal-dialog modal-sm fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Forgot password</h3>
+                <h3>Ingreso</h3>
                 <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <p>Reset your password..</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button class="btn btn-primary">Save changes</button>
+                <form class="form" role="form" >
+                    Login via
+                    <div class="social-buttons">
+                        <a routerLink="/home" class="btn btn-block btn-google">
+                            <i class="fab fa-google"></i> Google</a>
+                    </div>
+                    or
+                    <div class="form-group">
+                        <input id="emailInput" name="emailInput" placeholder="Email" class="form-control form-control-sm" type="email"   required>                    
+                    </div>
+            
+                    <div class="form-group">
+                        <input id="passwordInput" name="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password"   required>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Elegir usuario
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" (click)="setUsuario('CL')">Cliente</a>
+                                <a class="dropdown-item" (click)="setUsuario('CH')">Chofer</a>
+                                <a class="dropdown-item" (click)="setUsuario('EN')">Encargado</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button  type="submit"   class="btn  btn-block" (click)="login()">Confirmar</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <small>
+                            <a routerLink="/contacto" data-dismiss="modal">Olvidó su clave?</a>
+                        </small>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes }       from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { CanActivate } from '@angular/router';
 
 
@@ -42,7 +42,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
+    // FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

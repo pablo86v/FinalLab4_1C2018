@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../servicios/usuario.service';
-import { HttpModule } from '@angular/http';
+import { AuthService } from '../servicios/auth.service';
 declare var $;
 
 
@@ -13,16 +13,20 @@ declare var $;
 export class MyNavBarComponent implements OnInit {
 
 
-  userType : string ;
-  public emailInput = "jfermindez@gmail.com";
-  public passwordInput = "2222";
+  userType : string ="nobody";
+  emailInput : string;
+  passwordInput : string;
+  labelUsuario : string  = "Iniciar sesión";
+  required :boolean = true;
 
 
-
-  constructor(private router: Router,
-    private usuarioService: UsuarioService) { }
+  constructor(private router: Router, private usuarioService: UsuarioService,private auth : AuthService) { }
 
   ngOnInit() {
+
+  }
+
+  ngOnChanges(){
   
   }
 
@@ -32,8 +36,7 @@ export class MyNavBarComponent implements OnInit {
   }
 
 
-  public login(event : any)
-  {
+  login(event : any){
     // this.mostrarSpinner = true;
 
     this.usuarioService.login(this.emailInput, this.passwordInput).subscribe(
@@ -41,7 +44,9 @@ export class MyNavBarComponent implements OnInit {
       {
         console.log(data);
         this.router.navigate(['home']);
-      
+        this.userType = this.auth.getUsuarioLogueado().tipo;
+        this.labelUsuario = "Bienvenido, " + this.auth.getUsuarioLogueado().nombre;
+        localStorage.setItem("userType",this.userType);
       }
     ).add(()=>
     {
@@ -51,23 +56,34 @@ export class MyNavBarComponent implements OnInit {
     })
   }
 
-  // public setUsuario(tipo)
-  // {
-  //   console.log(tipo);
 
-  //   switch(tipo)
-  //   {
-  //     case 'encargado':
-  //       this.forma.setValue({correo:"jfermindez@gmail.com", password: "2222"});
-  //     break;
-  //     case 'cliente':
-  //       this.forma.setValue({correo:"pgomez@gmail.com", password: "5555"});
-  //     break;
-  //     case 'chofer':
-  //       this.forma.setValue({correo:"ealvarez@gmail.com", password: "4444"});
-  //     break;
-  //   }
-  // }
+  setUsuario(tipo){
+    switch(tipo) { 
+      case "CL": { 
+         this.emailInput = "pgomez@gmail.com";
+         this.passwordInput = "5555";
+         break; 
+      } 
+      case "CH": { 
+        this.emailInput = "hrodriguez@gmail.com";
+        this.passwordInput = "3333";
+         break; 
+      } 
+      case "EN": { 
+        this.emailInput = "jfermindez@gmail.com";
+        this.passwordInput = "2222";
+        break; 
+     }
+      default: { 
+         //statements; 
+         break; 
+      } 
+   } 
+    // document.getElementById("emailInput").value = this.emailInput;
+    // document.getElementById("passwordInput").value = this.passwordInput;
+  }
+
+
 
 
 }
