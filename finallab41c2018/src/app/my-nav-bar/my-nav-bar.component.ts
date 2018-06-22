@@ -17,7 +17,7 @@ export class MyNavBarComponent implements OnInit {
   emailInput : string;
   passwordInput : string;
   labelUsuario : string  = "Iniciar sesión";
-  required :boolean = true;
+  isLogued :boolean ;
 
 
   constructor(private router: Router, private usuarioService: UsuarioService,private auth : AuthService) { }
@@ -47,6 +47,7 @@ export class MyNavBarComponent implements OnInit {
         this.userType = this.auth.getUsuarioLogueado().tipo;
         this.labelUsuario = "Bienvenido, " + this.auth.getUsuarioLogueado().nombre;
         localStorage.setItem("userType",this.userType);
+        this.isLogued = this.auth.isLogued();
       }
     ).add(()=>
     {
@@ -56,6 +57,16 @@ export class MyNavBarComponent implements OnInit {
     })
   }
 
+
+  logOut(){
+
+    this.auth.logOut();
+    localStorage.clear();
+    this.isLogued = false;
+
+    window.location.reload();
+    this.router.navigate(['home']);
+  }
 
   setUsuario(tipo){
     switch(tipo) { 
