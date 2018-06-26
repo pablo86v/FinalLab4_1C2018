@@ -1,6 +1,3 @@
-<!-- **************************************************** 
-                 MODAL CON DETALLE DEL VEHICULO 
-         **************************************************** -->
 <div align="center" id="modalVehiculo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -12,6 +9,7 @@
         <p *ngIf="seleccionable==true">Comodidades del vehículo</p>
         <p *ngIf="seleccionable==false">Preferencias del cliente</p>
 
+        <!-- Checkbox UTILITARIO -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="input-group-text">
@@ -21,6 +19,7 @@
           <input type="text" class="form-control" placeholder="Camioneta/utilitario" disabled style="background-color: white; opacity: 1;">
         </div>
 
+        <!-- Checkbox AIRE ACONDICIONADO -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="input-group-text">
@@ -30,10 +29,10 @@
           <input type="text" class="form-control" placeholder="Aire Acondicionado" disabled style="background-color: white; opacity: 1;">
         </div>  
 
+        <!-- Combo CANTIDAD DE PUERTAS -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              *ngIf="seleccionable==true">Puertas</button>
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  *ngIf="seleccionable==true">Puertas</button>
             <div class="dropdown-menu">
               <a class="dropdown-item" (click)="setCantPuertas('3')">3 puertas</a>
               <a class="dropdown-item" (click)="setCantPuertas('5')">5 puertas</a>
@@ -43,11 +42,26 @@
           </div>
           <input type="text" class="form-control" placeholder='{{txtPuertas}}' disabled style="background-color: white; opacity: 1;">
         </div>
+
+        <!-- Combo VEHICULOS DISPONIBLES -->
+        <div class="input-group mb-3" *ngIf="userType=='EN'">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vehículo</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" (click)="setVehiculo(vehiculo)" *ngFor="let vehiculo of aVehiculos">{{vehiculo.modelo}} - {{vehiculo.anio}}</a>
+            </div>
+          </div>
+          <input type="text" class="form-control" placeholder='{{txtVehiculo}}' disabled style="background-color: white; opacity: 1;" >
+        </div>
+
       </div>
+   
+
       <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-        <button class="btn btn-primary" (click)="confirmar()">Confirmar</button>
+        <button class="btn"             data-dismiss="modal" aria-hidden="true">Cerrar</button>
+        <button class="btn btn-primary" data-dismiss="modal" (click)="confirmar(objViaje,idVehiculo)">Confirmar</button>
       </div> 
+    
     </div>
   </div>
 </div>

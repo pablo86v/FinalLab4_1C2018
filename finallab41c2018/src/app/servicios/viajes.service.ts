@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
-import {Viaje} from '../entidades/viajes';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import {Viaje} from '../entidades/viajes';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViajesService {
 
-  public viajes : Viaje[];
-  // public apiURL = "http://pablovalenzuela.esy.es/lab4/api/";
-  public apiURL = "http://localhost/lab4/api/viajes/";
+  public viajes : Array<Viaje>;
+ 
+  public apiURL= environment.apiURL + "/viajes/" ;
 
-  constructor(public http : HttpClient) { }
+  private headers: HttpHeaders;
+
+  constructor(public http : HttpClient) {
+    this.headers = new HttpHeaders();
+    this.headers.append('Content-Type', 'application/json');
+   }
 
 
-  getViajes() : Observable<Viaje[]> {
-    return this.http.get<Viaje[]>(this.apiURL +'traer')
+  getViajes() : Observable<Array<Viaje>> {
+    return this.http.get<Array<Viaje>>(this.apiURL +'traer')
     .pipe(
-      tap(data => this.log("viajes")),
-      catchError(this.handleError('getViajes', []))
+      tap(data => this.log("getViajes()")),
+      catchError(this.handleError('getViajes()', []))
     );
 
   }
 
 
-  getVistaViajes() : Observable<any[]> {
-    return this.http.get<any[]>(this.apiURL +'traer-vista')
+  getVistaViajes() : Observable<Array<any>> {
+    return this.http.get<Array<any>>(this.apiURL +'traer-vista')
     .pipe(
-      tap(data => this.log("vista-viajes")),
-      catchError(this.handleError('getViajes', []))
+      tap(data => this.log("getVistaViajes()")),
+      catchError(this.handleError('getVistaViajes', []))
     );
 
   }
@@ -39,16 +45,25 @@ export class ViajesService {
     return this.http.get<any>(this.apiURL +'traer-uno/'+id)
     .pipe(
       // map(data=>data.json()),
-      tap(data => this.log("un-viaje")),
-      catchError(this.handleError('getViajes', []))
+      tap(data => this.log("getOne()")),
+      catchError(this.handleError('getOne()',[]))
     );
 
   }
 
 
+  updateViaje(viaje : Viaje , idVehiculo : number) : Observable<any> {
+    viaje.idVehiculo = idVehiculo;
+
+    return this.http.post<boolean>(this.apiURL +'update',viaje, {headers: this.headers})
+    .pipe(
+      tap(data => this.log("update()")),
+      catchError(this.handleError('update()',[]))
+    );
+  }
 
 
-
+ 
 
 
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ViajesService } from '../servicios/viajes.service';
 import { Viaje } from '../entidades/viajes';
-import { ActivatedRoute } from '@angular/router';
+
 
 declare var $;
 
@@ -12,8 +13,8 @@ declare var $;
 })
 export class ViajesComponent implements OnInit {
 
-  public aViajes : Viaje [];
-  public aItems : any[];
+  public aViajes : Array<Viaje>;
+  public aItems : Array<any>;
   public objViaje : Viaje;
 
   constructor(public viajeService : ViajesService,private route: ActivatedRoute) {
@@ -61,6 +62,28 @@ export class ViajesComponent implements OnInit {
     );
 
   }
+
+
+  getColorByState(estado: string):string{
+    let color : string = "";
+    switch(estado){
+      case "Realizado" : {
+       color =  "#7FCC14";
+       break
+      }
+      case "Solicitado" : {
+        color = "#CCB919";
+        break
+      }
+      case "Cancelado": {
+        color= "#FF4011"
+        break
+      }    
+    }
+    return color;
+  }  
+
+
 
   test(){
     alert("ok");

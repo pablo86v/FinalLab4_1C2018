@@ -10,7 +10,7 @@ import { Viaje } from '../entidades/viajes';
 export class ViajesClientesComponent implements OnInit {
 
 
-  public aViajes : Viaje [];
+  public aViajes : Array<Viaje>;
 
   constructor(public viajeService : ViajesService) { }
 

@@ -36,7 +36,7 @@ export class MyNavBarComponent implements OnInit {
   }
 
 
-  login(event : any){
+  login(){
     // this.mostrarSpinner = true;
 
     this.usuarioService.login(this.emailInput, this.passwordInput).subscribe(
@@ -64,7 +64,7 @@ export class MyNavBarComponent implements OnInit {
     localStorage.clear();
     this.isLogued = false;
 
-    window.location.reload();
+    location.reload();
     this.router.navigate(['home']);
   }
 
@@ -72,7 +72,7 @@ export class MyNavBarComponent implements OnInit {
     switch(tipo) { 
       case "CL": { 
          this.emailInput = "pgomez@gmail.com";
-         this.passwordInput = "5555";
+         this.passwordInput = "6666";
          break; 
       } 
       case "CH": { 

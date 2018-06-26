@@ -25,9 +25,10 @@ BEGIN
 	insert into tbUsuarios values(2,"Jorge"   ,"Fermindez" ,"23456098" , "jfermindez@gmail.com" ,"2222", "Pintos 354, Bernal"            ,"EN");
 	insert into tbUsuarios values(3,"Hernan"  ,"Rodriguez" ,"30456463" , "hrodriguez@gmail.com" ,"3333", "Sanchez 1290, Quilmes"         ,"CH");
 	insert into tbUsuarios values(4,"Ezequiel","Alvarez"   ,"31983480" , "ealvarez@gmail.com"   ,"4444", "Payró 289, Longchamps"    	 ,"CH");
-	insert into tbUsuarios values(5,"Pablo"	  ,"Gomez"     ,"29763356" , "pgomez@gmail.com"     ,"5555", "Asamblea 1344, Burzaco"        ,"CL");
-	insert into tbUsuarios values(6,"Walter"  ,"Perez"     ,"33250078" , "wperez@gmail.com"     ,"6666", "Ricardo Davel 230, Longchamps" ,"CL");
-	insert into tbUsuarios values(7,"Javier"  ,"Loria"     ,"32639490" , "jloria@gmail.com"     ,"7777", "Chacabuco 110, Longchamps"     ,"CL");
+	insert into tbUsuarios values(5,"Antonio" ,"Garzon"   ,"32639476" , "agarzon@gmail.com"     ,"5555", "Pueyrredon 2193, Glew"    	 ,"CH");
+	insert into tbUsuarios values(6,"Pablo"	  ,"Gomez"     ,"29763356" , "pgomez@gmail.com"     ,"6666", "Asamblea 1344, Burzaco"        ,"CL");
+	insert into tbUsuarios values(7,"Walter"  ,"Perez"     ,"33250078" , "wperez@gmail.com"     ,"7777", "Ricardo Davel 230, Longchamps" ,"CL");
+	insert into tbUsuarios values(8,"Javier"  ,"Loria"     ,"32639490" , "jloria@gmail.com"     ,"8888", "Chacabuco 110, Longchamps"     ,"CL");
 	
 	
 	
@@ -41,6 +42,7 @@ BEGIN
 	insert into tbEmpleados values(1,2,"20234560983","1533664789");
 	insert into tbEmpleados values(2,3,"20304564633","1545639984");
 	insert into tbEmpleados values(3,4,"20319834803","1538439211");
+	insert into tbEmpleados values(4,5,"20326394763","1537679989");
 	
 	
 	
@@ -81,14 +83,14 @@ BEGIN
 	insert into tbViajes values (7,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
 	insert into tbViajes values (8,null,2,"3;si;no","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","05/06/2018","CC");
 	insert into tbViajes values (9,null,2,"","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","06/06/2018","CC");
-	insert into tbViajes values (10,null,2,"5;no;si","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977", "0" ,"30/06/2018","");
+	insert into tbViajes values (10,null,2,"3;si;no","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977", "0" ,"30/06/2018","");
 	
 	
 	
 	-- ****************************************** CTAS CORRIENTES *****************************************************
 	create table tbCtasCorrientes (
-		idCtaCorriente     int        unsigned auto_increment primary key,
-		idCliente          int         not null,
+		idCtaCorriente     int          unsigned auto_increment primary key,
+		idCliente          int          not null,
 		saldo		       varchar(20)  not null
 	);
 	insert into tbCtasCorrientes values (1,1,"0");
@@ -99,18 +101,20 @@ BEGIN
 	
 	-- ****************************************** VEHICULOS *********************************************************
 	create table tbVehiculos (
-		idVehiculos        int        unsigned auto_increment primary key,
+		idVehiculo         int          unsigned auto_increment primary key,
 		idEmpleado         int          not null, -- id del chofer
 		modelo		       varchar(20)  not null, -- por ej  Renault Sandero 
 		anio               varchar(4)   null,
 		color              varchar(20)  not null, -- utilizar enumerados en F.E
 		dominio            varchar (20) not null, -- chapa patente
-		cantPuertas        int(4)       not null, -- 3 o 5
+		cantPuertas        varchar(2)   not null, -- 3 o 5
 		utilitario         varchar(2)   not null, -- si/no
 		aireAcondicionado  varchar(2)   not null  -- si/no
 	);
-	insert into tbVehiculos values (1,2,"Renault Clio","2014","BL","OLF 948",5,"NO","SI");
-	insert into tbVehiculos values (2,3,"Renault Kangoo","2016","NE","PAK 455",4,"SI","NO");
+	insert into tbVehiculos values (1,2,"Renault Clio","2014","Rojo","OLF 948","5","NO","SI");
+	insert into tbVehiculos values (2,3,"Renault Kangoo","2016","Negro","PAK 455","3","SI","NO");
+	insert into tbVehiculos values (3,3,"Renault Kangoo","2012","Blanco","PAK 455","3","SI","NO");
+ 
 	
 END$$
 

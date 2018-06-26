@@ -1,5 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Viaje } from '../entidades/viajes';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Viaje }    from '../entidades/viajes';
+import { Vehiculo } from '../entidades/vehiculo';
+import { VehiculoService} from '../servicios/vehiculo.service';
+import { ViajesService } from '../servicios/viajes.service';
+import { error } from 'util';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,24 +20,38 @@ export class ModalElegirVehiculoComponent implements OnInit {
   // flag que indica si los datos del vehiculo pueden ser seleccionados
   @Input() public seleccionable : boolean;
 
-  txtPuertas :string  ;
-  chkUtilitario : boolean = false;
-  chkUtilitarioDisabled :boolean = true;
-  chkAireAcondDisabled :boolean = true;
-  chkAireAcond :boolean = false;
+  idVehiculo             : number;
+  userType               : string;
+  txtPuertas             : string;
+  txtVehiculo            : string;
+  chkUtilitario          : boolean = false;
+  chkUtilitarioDisabled  : boolean = true;
+  chkAireAcondDisabled   : boolean = true;
+  chkAireAcond           : boolean = false;
+  aVehiculos             : Array<Vehiculo>;
 
-  constructor() {   
+  constructor(public vehiculoService : VehiculoService, public viajeService : ViajesService,private router: Router) {   
   }
 
   ngOnInit() {
     this.txtPuertas = "Indistinto";
+    this.userType = localStorage.getItem("userType");
   }  
 
   ngOnChanges(){
-    if(this.objViaje != null) this.setControls();
+    this.txtVehiculo = "Seleccione"
+    if(this.objViaje != null) {
+      this.setControls();
+      if(this.objViaje.comodidades != ""){
+        this.getVehiculosWithParams(this.objViaje.comodidades);
+      }else{
+        this.getVehiculos();
+      }
+    }
     
   }
   
+  // Seteo los checkbox según las preferencias del cliente.
   setControls(){
     // cantPuertas;utilitario;aireAcondicionado
     let aComodidades = this.objViaje.comodidades.split(";");
@@ -46,14 +66,43 @@ export class ModalElegirVehiculoComponent implements OnInit {
 
   }
 
+  // Modifico el input con el nombre del vehiculo elegido
+  setVehiculo(vehiculo : Vehiculo){
+    this.idVehiculo = vehiculo.idVehiculo;
+    this.txtVehiculo = vehiculo.modelo + " - " + vehiculo.anio;
+  }
 
+  // Modifico el input con la cant de puertas
   setCantPuertas(cant){
-    console.log(cant)
     this.txtPuertas = cant;
   }
 
-  confirmar(){
-   console.log("confirmar");
+  //Recupero lista de vehiculos disponibles según las preferencias del cliente
+  getVehiculosWithParams(comodidades){
+    this.vehiculoService.getVehiculosWithParams(comodidades).subscribe(
+      data => this.aVehiculos = data,
+      err => console.error(err)
+    )
+  }
+
+  //Recupero todos los vehiculos
+  getVehiculos(){
+    this.vehiculoService.getVehiculos().subscribe(
+      data => this.aVehiculos = data,
+      err => console.error(err)
+    )
+  }
+
+  confirmar(viaje:Viaje){
+    this.txtVehiculo = "";
+    this.viajeService.updateViaje(viaje,this.idVehiculo).subscribe(
+      data => {
+               console.log(data)
+               location.reload();
+              }     
+               ,
+      err  => console.error(err)
+    )
   }
 
   test(){
