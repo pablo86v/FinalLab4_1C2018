@@ -103,6 +103,7 @@ BEGIN
 	create table tbVehiculos (
 		idVehiculo         int          unsigned auto_increment primary key,
 		idEmpleado         int          not null, -- id del chofer
+		estado             varchar(20)  not null, -- activo o inactivo 
 		modelo		       varchar(20)  not null, -- por ej  Renault Sandero 
 		anio               varchar(4)   null,
 		color              varchar(20)  not null, -- utilizar enumerados en F.E
@@ -111,9 +112,9 @@ BEGIN
 		utilitario         varchar(2)   not null, -- si/no
 		aireAcondicionado  varchar(2)   not null  -- si/no
 	);
-	insert into tbVehiculos values (1,2,"Renault Clio","2014","Rojo","OLF 948","5","NO","SI");
-	insert into tbVehiculos values (2,3,"Renault Kangoo","2016","Negro","PAK 455","3","SI","NO");
-	insert into tbVehiculos values (3,3,"Renault Kangoo","2012","Blanco","PAK 455","3","SI","NO");
+	insert into tbVehiculos values (1,2,"activo","Renault Clio","2014","Rojo","OLF 948","5","NO","SI");
+	insert into tbVehiculos values (2,3,"activo","Renault Kangoo","2016","Negro","PAK 455","3","SI","NO");
+	insert into tbVehiculos values (3,3,"activo","Renault Kangoo","2012","Blanco","PAK 455","3","SI","NO");
  
 	
 END$$

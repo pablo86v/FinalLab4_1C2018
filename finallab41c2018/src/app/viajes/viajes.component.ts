@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ViajesService } from '../servicios/viajes.service';
 import { Viaje } from '../entidades/viajes';
-
-
+import { DataService } from '../servicios/data.service';
 declare var $;
 
 @Component({
@@ -16,52 +14,36 @@ export class ViajesComponent implements OnInit {
   public aViajes : Array<Viaje>;
   public aItems : Array<any>;
   public objViaje : Viaje;
+  public apiName = "/viaje/";
 
-  constructor(public viajeService : ViajesService,private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, public dataService: DataService) {
 
   }
 
 
   ngOnInit() {
-    // this.getParams();
-    this.getVistaViajes();
-    // this.getViajes();
-
+    this.getVistaViajes(); 
   }
 
-  // consulta la lista de viajes 
-  getViajes(): void{
-     this.viajeService.getViajes().subscribe(
-      data => this.aViajes = data,
-      err => console.error(err)
-    )
-  }
 
   getVistaViajes(): void{
-    this.viajeService.getVistaViajes().subscribe(
+    this.dataService.getView(this.apiName).subscribe(
      data => this.aItems = data,
      err => console.error(err)
    )
   }
 
+
   // Dado el bindeo desde el modal hacia el objeto, este metodo dispara el ngOnChanges() del modal.
   setObjViaje(idViaje){
-     this.viajeService.getOne(idViaje).subscribe(
-       data => {
-          this.objViaje = data;
-          console.info(this.objViaje);
-       },
-       err => console.error(err)
-     )
-  }
-
-  //recupero params recibidos por queryString
-  getParams(){
-    this.route.queryParams.subscribe(
-      params =>  console.log(params.page)
-    );
-
-  }
+    this.dataService.getOne(this.apiName,idViaje).subscribe(
+      data => {
+         this.objViaje = data;
+         console.info(this.objViaje);
+      },
+      err => console.error(err)
+    )
+ }
 
 
   getColorByState(estado: string):string{
@@ -90,7 +72,12 @@ export class ViajesComponent implements OnInit {
   }
 
 
-
+  //recupero params recibidos por queryString
+  // getParams(){
+  //   this.route.queryParams.subscribe(
+  //     params =>  console.log(params.page)
+  //   );
+  // }
 
   
 }//class

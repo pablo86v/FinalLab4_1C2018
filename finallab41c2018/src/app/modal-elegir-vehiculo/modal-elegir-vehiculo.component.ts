@@ -1,12 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Viaje }    from '../entidades/viajes';
 import { Vehiculo } from '../entidades/vehiculo';
-import { VehiculoService} from '../servicios/vehiculo.service';
-import { ViajesService } from '../servicios/viajes.service';
-import { error } from 'util';
 import { Router } from '@angular/router';
-
+import { DataService } from '../servicios/data.service';
+// import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+// import { error } from 'util';
 
 @Component({
   selector: 'app-modal-elegir-vehiculo',
@@ -29,8 +27,9 @@ export class ModalElegirVehiculoComponent implements OnInit {
   chkAireAcondDisabled   : boolean = true;
   chkAireAcond           : boolean = false;
   aVehiculos             : Array<Vehiculo>;
+  
 
-  constructor(public vehiculoService : VehiculoService, public viajeService : ViajesService,private router: Router) {   
+  constructor( private router: Router, public dataService:DataService) {   
   }
 
   ngOnInit() {
@@ -79,7 +78,7 @@ export class ModalElegirVehiculoComponent implements OnInit {
 
   //Recupero lista de vehiculos disponibles según las preferencias del cliente
   getVehiculosWithParams(comodidades){
-    this.vehiculoService.getVehiculosWithParams(comodidades).subscribe(
+    this.dataService.getAllWithParams("/vehiculo/",comodidades).subscribe(
       data => this.aVehiculos = data,
       err => console.error(err)
     )
@@ -87,7 +86,7 @@ export class ModalElegirVehiculoComponent implements OnInit {
 
   //Recupero todos los vehiculos
   getVehiculos(){
-    this.vehiculoService.getVehiculos().subscribe(
+    this.dataService.getAll("/vehiculo/").subscribe(
       data => this.aVehiculos = data,
       err => console.error(err)
     )
@@ -95,12 +94,10 @@ export class ModalElegirVehiculoComponent implements OnInit {
 
   confirmar(viaje:Viaje){
     this.txtVehiculo = "";
-    this.viajeService.updateViaje(viaje,this.idVehiculo).subscribe(
-      data => {
-               console.log(data)
-               location.reload();
-              }     
-               ,
+    viaje.idVehiculo = this.idVehiculo ;
+    this.dataService.update("/viaje/",viaje).subscribe(
+      data => {console.log(data)
+               location.reload(true)},
       err  => console.error(err)
     )
   }

@@ -15,7 +15,7 @@ export class ValidarAccesoService implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
       let isLogued = this.auth.isLogued();
 
-      console.log(isLogued);
+      // console.log(isLogued);
  
       if (isLogued ) {
         return true;

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ViajesService } from '../servicios/viajes.service';
 import { Viaje } from '../entidades/viajes';
 
 @Component({
@@ -12,18 +11,12 @@ export class ViajesClientesComponent implements OnInit {
 
   public aViajes : Array<Viaje>;
 
-  constructor(public viajeService : ViajesService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getViajes();
+ 
   }
 
-  getViajes(): void{
-     this.viajeService.getViajes().subscribe(
-      data => this.aViajes = data,
-      err => console.error(err),
-      () => console.log(this.aViajes)
-    )
-  }
+
 
 }

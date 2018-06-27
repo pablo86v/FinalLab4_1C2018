@@ -1,0 +1,39 @@
+.row {
+    padding: .40rem;
+    vertical-align: top;
+}
+.row-header{
+    background : #343a40;
+    color: white;   
+}
+
+.row-border {
+    /* border-style: groove ; */
+    border-radius: 5px!important;
+    border-color: #343a40;
+}
+
+
+.row-child:nth-child(odd) {
+    background-color:#f2f2f2;
+
+}
+.row-child:nth-child(even) {
+    background-color:#fbfbfb;
+
+}
+
+.col-border {
+    /* border-style: solid; */
+    border-width: 1px;
+}
+
+.col-btn-asignar{
+    margin-left: 0px !important;
+    padding-left: 0px !important;   
+}
+
+.btn-link{
+    padding-top:0px!important;
+    color : #212529;
+}

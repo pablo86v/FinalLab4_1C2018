@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsuarioService } from '../servicios/usuario.service';
 import { AuthService } from '../servicios/auth.service';
+import { DataService } from '../servicios/data.service';
 declare var $;
 
 
@@ -13,33 +13,35 @@ declare var $;
 export class MyNavBarComponent implements OnInit {
 
 
-  userType : string ="nobody";
+  userType : string ;
   emailInput : string;
   passwordInput : string;
   labelUsuario : string  = "Iniciar sesión";
   isLogued :boolean ;
 
 
-  constructor(private router: Router, private usuarioService: UsuarioService,private auth : AuthService) { }
+  constructor(private router: Router, private dataService : DataService,private auth : AuthService) { 
+   
+  }
 
   ngOnInit() {
-
+    console.log("Resolution: "+ screen.width);
+    this.isLogued = this.auth.isLogued();
+    if(this.isLogued){
+      this.userType = localStorage.getItem("userType");   
+      this.labelUsuario = "Bienvenido, " + this.auth.getUsuarioLogueado().nombre;
+    }
+     
   }
 
   ngOnChanges(){
-  
-  }
 
-  goTo(page){
-     // this.router.navigate([page], { queryParams: { page: 1 } });
-    this.router.navigate([page]);
   }
-
 
   login(){
     // this.mostrarSpinner = true;
 
-    this.usuarioService.login(this.emailInput, this.passwordInput).subscribe(
+    this.auth.login(this.emailInput, this.passwordInput).subscribe(
       data => 
       {
         console.log(data);
@@ -55,6 +57,13 @@ export class MyNavBarComponent implements OnInit {
       // this.forma.reset();
      
     })
+  }
+
+  restoreDB(){
+        this.dataService.restoreDB().subscribe(
+          data => console.log("Base restaurada"),
+          err => console.error(err)
+        );
   }
 
 
@@ -94,7 +103,10 @@ export class MyNavBarComponent implements OnInit {
     // document.getElementById("passwordInput").value = this.passwordInput;
   }
 
-
+  // goTo(page){
+  //    // this.router.navigate([page], { queryParams: { page: 1 } });
+  //   this.router.navigate([page]);
+  // }
 
 
 }
