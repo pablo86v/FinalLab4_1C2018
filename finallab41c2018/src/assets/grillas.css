@@ -1,3 +1,4 @@
+ 
 .row {
     padding: .40rem;
     vertical-align: top;
@@ -12,7 +13,6 @@
     border-radius: 5px!important;
     border-color: #343a40;
 }
-
 
 .row-child:nth-child(odd) {
     background-color:#f2f2f2;
@@ -36,4 +36,14 @@
 .btn-link{
     padding-top:0px!important;
     color : #212529;
+}
+
+.page-item.active .page-link {
+    background-color: #f2f2f2;
+    border-color: #343a40;
+    color : #000
+}
+
+.row-mostrar:after{
+    display: none;
 }

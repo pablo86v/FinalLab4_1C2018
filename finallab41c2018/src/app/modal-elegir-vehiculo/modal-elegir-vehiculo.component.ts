@@ -3,6 +3,7 @@ import { Viaje }    from '../entidades/viajes';
 import { Vehiculo } from '../entidades/vehiculo';
 import { Router } from '@angular/router';
 import { DataService } from '../servicios/data.service';
+import { environment } from '../../environments/environment';
 // import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 // import { error } from 'util';
 
@@ -47,7 +48,6 @@ export class ModalElegirVehiculoComponent implements OnInit {
         this.getVehiculos();
       }
     }
-    
   }
   
   // Seteo los checkbox según las preferencias del cliente.
@@ -78,7 +78,7 @@ export class ModalElegirVehiculoComponent implements OnInit {
 
   //Recupero lista de vehiculos disponibles según las preferencias del cliente
   getVehiculosWithParams(comodidades){
-    this.dataService.getAllWithParams("/vehiculo/",comodidades).subscribe(
+    this.dataService.getAllWithParams(environment.apiVehiculos,comodidades).subscribe(
       data => this.aVehiculos = data,
       err => console.error(err)
     )
@@ -86,7 +86,7 @@ export class ModalElegirVehiculoComponent implements OnInit {
 
   //Recupero todos los vehiculos
   getVehiculos(){
-    this.dataService.getAll("/vehiculo/").subscribe(
+    this.dataService.getAll(environment.apiVehiculos).subscribe(
       data => this.aVehiculos = data,
       err => console.error(err)
     )
@@ -95,7 +95,7 @@ export class ModalElegirVehiculoComponent implements OnInit {
   confirmar(viaje:Viaje){
     this.txtVehiculo = "";
     viaje.idVehiculo = this.idVehiculo ;
-    this.dataService.update("/viaje/",viaje).subscribe(
+    this.dataService.update(environment.apiViajes,viaje).subscribe(
       data => {console.log(data)
                location.reload(true)},
       err  => console.error(err)

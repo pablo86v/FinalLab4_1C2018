@@ -1,7 +1,7 @@
 
 DELIMITER $$
 
-DROP VIEW IF EXISTS spGetViajes$$
+DROP PROCEDURE IF EXISTS spGetViajes$$
 CREATE PROCEDURE spGetViajes( )
 BEGIN
 	select  vi.idViaje,CONCAT(cl.idCliente," - ",us.apellido,",",us.nombre) as cliente, vi.idVehiculo,vi.fechaViaje,vi.monto,vi.estado

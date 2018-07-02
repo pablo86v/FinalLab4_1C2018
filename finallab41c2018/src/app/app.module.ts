@@ -17,6 +17,10 @@ import { VehiculosComponent } from './vehiculos/vehiculos.component';
 
 //Servicios
 import { ValidarAccesoService } from './servicios/validar-acceso.service';
+import { ModalDetalleVehiculoComponent } from './modal-detalle-vehiculo/modal-detalle-vehiculo.component';
+
+
+
 
 
 const appRoutes: Routes = [
@@ -36,7 +40,8 @@ const appRoutes: Routes = [
     ViajesComponent,
     ViajesClientesComponent,
     ModalElegirVehiculoComponent,
-    VehiculosComponent
+    VehiculosComponent,
+    ModalDetalleVehiculoComponent
   ],
   exports: [
     HttpClientModule

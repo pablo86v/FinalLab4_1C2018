@@ -18,7 +18,7 @@ export class DataService {
     this.headers.append('Content-Type', 'application/json');
    }
 
-
+   //Array puro de una entidad
    getAll(apiName) : Observable<Array<any>> {
     return this.http.get<Array<any>>(this.apiURL + apiName + 'traer')
     .pipe(
@@ -27,6 +27,7 @@ export class DataService {
     );
   }
 
+  //Array custom que puede ser join de tablas
   getAllWithParams(apiName,params) : Observable<Array<any>> {
     return this.http.get<Array<any>>(this.apiURL + apiName + 'traer-con-params/'+ params)
     .pipe(
@@ -36,6 +37,17 @@ export class DataService {
 
   }
 
+  // Objeto custom que puede ser un join de tablas
+  getObjectWithParams(apiName,params) : Observable<any> {
+    return this.http.get<Array<any>>(this.apiURL + apiName + 'traer-objeto-con-params/'+ params)
+    .pipe(
+      tap(data => this.log(apiName + "::getObjectWithParams()")),
+      catchError(this.handleError(apiName + '::getObjectWithParams()', []))
+    );
+
+  }
+
+  //Recupero una vista para cargar una grilla
   getView(apiName) : Observable<Array<any>> {
     return this.http.get<Array<any>>(this.apiURL + apiName +'traer-vista')
     .pipe(
@@ -44,6 +56,7 @@ export class DataService {
     );
   }
 
+  //Objeto puro de una entidad
   getOne( apiName,id) : Observable<any> {
     return this.http.get<any>(this.apiURL + apiName +'traer-uno/'+id)
     .pipe(
@@ -53,6 +66,7 @@ export class DataService {
     );
   }
 
+  //Actualizo un objeto
   update(apiName,obj) : Observable<any> {
     return this.http.post<boolean>(this.apiURL + apiName + 'update',obj, {headers: this.headers})
     .pipe(
@@ -61,6 +75,11 @@ export class DataService {
     );
   }
 
+
+
+  // ******************************************************************
+  // *********************  FUNCIONES MISC ****************************
+  // ******************************************************************
 
   public restoreDB()  {
     return this.http.get(this.apiURL +'/usuario/restoreDB')
@@ -82,8 +101,7 @@ export class DataService {
     };
   }
  
- 
-  private log(message: string) {
+   private log(message: string) {
     console.log(message);
   }
 

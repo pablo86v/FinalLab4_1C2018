@@ -12,7 +12,7 @@ export class Vehiculo{
     public anio                 : string ;
     public color                : string ;
     public dominio              : string ;
-    public cantPuertas          : number ;
+    public cantPuertas          : string ;
     public utilitario           : string ;
     public aireAcondicionado    : string ;
 
@@ -24,7 +24,7 @@ export class Vehiculo{
         parAnio               : string,
         parColor              : string,
         parDominio            : string,
-        parCantPuertas        : number,
+        parCantPuertas        : string,
         parUtilitario         : string,
         parAireAcondicionado  : string
     ){

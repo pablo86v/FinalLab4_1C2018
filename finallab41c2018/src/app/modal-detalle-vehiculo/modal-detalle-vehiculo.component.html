@@ -1,0 +1,19 @@
+<div align="center" id="modalDetalleVehiculo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/remis2.jpg" alt="Card image cap">
+            <div class="card-body ">
+              <h4 class="card-title">{{modelo}} {{anio}}</h4>
+              <h6 class="card-title text-uppercase"><small>{{dominio}}</small></h6>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngIf="empleado.length > 0">Chofer: {{empleado}}</li>
+              <li class="list-group-item" *ngIf="aireAcondicionado">Aire Acondicionado</li>
+              <li class="list-group-item" >Puertas: {{cantPuertas}} </li>
+              <li class="list-group-item" >Color: {{color}} </li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</a>
+            </div>
+          </div>
+  </div>
