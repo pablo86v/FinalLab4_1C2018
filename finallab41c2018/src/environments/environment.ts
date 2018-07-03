@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiURL: "http://localhost/lab4/api",
-  // apiURL: "http://pablovalenzuela.esy.es/lab4/api"
+  // apiURL: "http://pablovalenzuela.esy.es/lab4/api",
   availablePageSizes:[5,15,30,50],
   apiViajes:"/viaje/",
   apiVehiculos:"/vehiculo/",
