@@ -49,7 +49,7 @@ export class ModalDetalleVehiculoComponent implements OnInit {
     this.dataService.getObjectWithParams(environment.apiEmpleado,auto.idEmpleado).subscribe(
         data => { 
                  this.empleado = data.idEmpleado + " - " + data.apellido + "," + data.nombre;
-                 console.log(data) 
+                 // console.log(data) 
                 },
         err => console.error(err)
       )

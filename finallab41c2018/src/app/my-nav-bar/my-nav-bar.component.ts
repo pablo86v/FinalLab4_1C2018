@@ -25,7 +25,7 @@ export class MyNavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Resolution: "+ screen.width);
+    // console.log("Resolution: "+ screen.width);
     this.isLogued = this.auth.isLogued();
     if(this.isLogued){
       this.userType = localStorage.getItem("userType");   
@@ -44,7 +44,7 @@ export class MyNavBarComponent implements OnInit {
     this.auth.login(this.emailInput, this.passwordInput).subscribe(
       data => 
       {
-        console.log(data);
+        // console.log(data);
         this.router.navigate(['home']);
         this.userType = this.auth.getUsuarioLogueado().tipo;
         this.labelUsuario = "Bienvenido, " + this.auth.getUsuarioLogueado().nombre;

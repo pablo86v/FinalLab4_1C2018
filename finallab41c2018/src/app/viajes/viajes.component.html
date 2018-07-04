@@ -3,10 +3,11 @@
   <!-- **********************  VISTA DESKTOP ***********************
   ****************************************************************** -->
   <div class="d-none d-sm-block mb-5">
+
     <div class="row sticky-top mt-4 p-0">
-      <div class="col-xs-12 col-md-12 col-lg-12 col-border">
-        <h4 align="center">Viajes</h4>
-        <div class="row align-center row-mostrar">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-border text-center">
+        <h4 style="font-family: 'Merriweather', serif;font-size: 200%;" align="center">Viajes</h4>
+        <div class="row align-center row-mostrar  m-0 p-0">
           <div class="col text-center">
             <div class="dropdown">
               <button class="btn btn btn-link btn-sm " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -19,7 +20,9 @@
             </div>
           </div>
         </div>
-        <div class="row row-header row-border">
+
+        <!-- HEADER -->
+        <div class="row  row-header row-border">
           <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center">#</div>
           <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 text-center d-none d-xl-block">Cliente</div>
           <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center">Coche</div>
@@ -31,6 +34,7 @@
       </div>
     </div>
 
+    <!-- ROWs con datos     -->
     <div class="row row-child row-border mt-1 p-0 " *ngFor="let item of pagedItems">
       <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 col-border text-center mt-2">#{{item.idViaje}}</div>
       <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-border text-center mt-2 text-truncate d-none d-xl-block">{{item.cliente}}</div>
@@ -52,15 +56,15 @@
         </button>
       </div>
     </div>
-
   </div>
+
 
   <!-- **********************  VISTA MOBILE ************************
   ****************************************************************** -->
   <div class="d-block d-sm-none mb-5">
     <div class="row sticky-top mt-4 p-0">
       <div class="col-xs-12 col-md-12 col-lg-12 col-border">
-        <h4 align="center">Viajes</h4>
+        <h4 style="font-family: 'Merriweather', serif;font-size: 100%;"  align="center">Viajes</h4>
         <div class="row align-center">
           <div class="col text-center">
             <div class="dropdown">
@@ -136,7 +140,8 @@
     </div>
   </div>
 
-</div><!-- container -->
+</div>
+<!-- container -->
 
 
 <!-- ***************  MODAL SELECCION VEHICULO  ****************

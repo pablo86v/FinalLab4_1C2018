@@ -1,1 +1,10 @@
 @import url('../../assets/grillas.css');
+
+.more{
+    background-color: #FFFFFF;
+    padding-top:3px;
+}
+
+.chofer{
+    text-overflow: ellipsis;
+}
