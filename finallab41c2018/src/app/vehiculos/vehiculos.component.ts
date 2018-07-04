@@ -13,6 +13,9 @@ export class VehiculosComponent implements OnInit {
 
   aVehiculos : Vehiculo [];
   aItems: any[];
+  chkEstado : boolean = true;
+  public objVehiculo : Vehiculo;
+
 
   //Atributos para paginado
   pager: any = {};
@@ -50,8 +53,33 @@ export class VehiculosComponent implements OnInit {
     }
   }
 
+  getEstate(estado: string):boolean{
+    if(estado == "Activo")
+    {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  changeState(objVehiculo){
+    let estado = objVehiculo.estado ;
+    //invierto el estado 
+    objVehiculo.estado = estado == "Activo" ? "Inactivo" : "Activo"
+    
+    //Recupero el obj vehiculo a modificar
+    this.setObjVehiculo(objVehiculo.idVehiculo);
+
+    //Ejecuto el update contra la BBDD
+    this.dataService.update(environment.apiVehiculos,objVehiculo).subscribe(
+      data => console.log(data),
+      err => console.error(err)
+    )
+
+  }
+
   getVistaVehiculos(){
-    this.dataService.getView("/vehiculo/").subscribe(
+    this.dataService.getView(environment.apiVehiculos).subscribe(
       data => {this.aItems = data;
        // initialize to page 1
        this.setPage(1);      
@@ -60,6 +88,17 @@ export class VehiculosComponent implements OnInit {
     );
   }
 
+
+    // Dado el bindeo desde el modal hacia el objeto, este metodo dispara el ngOnChanges() del modal.
+    setObjVehiculo(idVehiculo){
+      this.dataService.getOne(environment.apiVehiculos,idVehiculo).subscribe(
+        data => {
+            this.objVehiculo = data;
+            console.info(this.objVehiculo);
+        },
+        err => console.error(err)
+      )
+    }
 
   getColorByState(estado: string):string{
     if(estado == "Activo")
