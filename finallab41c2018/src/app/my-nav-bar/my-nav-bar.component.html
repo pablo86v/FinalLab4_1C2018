@@ -12,6 +12,12 @@
             <li class="nav-item" *ngIf="userType=='EN'"><a routerLink="/vehiculos" class="nav-link">Vehículos</a></li>
             <li class="nav-item" *ngIf="userType=='CL'"><a routerLink="/viajes-clientes" class="nav-link">Mis Viajes</a></li>
         </ul>
+        <ul class="nav navbar-nav justify-content-center">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+             </form>
+        </ul>
         <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
             <li class="nav-item">
                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalPassword">{{labelUsuario}}</button>

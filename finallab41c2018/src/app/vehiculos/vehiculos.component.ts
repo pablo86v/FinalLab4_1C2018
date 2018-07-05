@@ -3,6 +3,7 @@ import { Vehiculo } from '../entidades/vehiculo';
 import { DataService } from '../servicios/data.service';
 import { environment } from '../../environments/environment';
 import { PagerService } from '../servicios/pager.service';
+declare var $;
 
 @Component({
   selector: 'app-vehiculos',
@@ -62,19 +63,28 @@ export class VehiculosComponent implements OnInit {
     }
   }
 
-  changeState(objVehiculo){
-    let estado = objVehiculo.estado ;
-    //invierto el estado 
-    objVehiculo.estado = estado == "Activo" ? "Inactivo" : "Activo"
-    
-    //Recupero el obj vehiculo a modificar
-    this.setObjVehiculo(objVehiculo.idVehiculo);
+  changeState(event,objVehiculo){
 
-    //Ejecuto el update contra la BBDD
-    this.dataService.update(environment.apiVehiculos,objVehiculo).subscribe(
-      data => console.log(data),
-      err => console.error(err)
-    )
+
+    if( confirm("¿Desea modificar el estado de del vehiculo #" + objVehiculo.idVehiculo + "?" )){
+      let estado = objVehiculo.estado ;
+      //invierto el estado 
+      objVehiculo.estado = estado == "Activo" ? "Inactivo" : "Activo"
+      
+      //Recupero el obj vehiculo a modificar
+      this.setObjVehiculo(objVehiculo.idVehiculo);
+  
+      //Ejecuto el update contra la BBDD
+      this.dataService.update(environment.apiVehiculos,objVehiculo).subscribe(
+        data => console.log(data),
+        err => console.error(err)
+      )
+    }else{
+      event.target.checked = !event.target.checked;
+
+    }
+
+
 
   }
 

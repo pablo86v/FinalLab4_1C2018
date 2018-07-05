@@ -6,7 +6,7 @@
 
     <div class="row sticky-top mt-4 p-0">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-border text-center">
-        <h4 style="font-family: 'Merriweather', serif;font-size: 200%;" align="center">Vehículos</h4>
+        <h4 align="center">Vehículos</h4>
         <div class="row align-center row-mostrar  m-0 p-0">
           <div class="col text-center">
             <div class="dropdown">
@@ -45,7 +45,7 @@
       <div class="col-sm-4 col-md-5 col-lg-5 col-xl-1 col-border text-center mt-2 text-truncate">{{item.color}}</div>
       <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1 col-border text-center mt-2">
         <label class="switch">
-          <input type="checkbox" [ngModel]="getEstate(item.estado)" (click)="changeState(item)">
+          <input id="chkEstado" type="checkbox" [ngModel]="getEstate(item.estado)" (click)="changeState($event,item)">
           <span class="slider round"></span>
         </label>
       </div>
@@ -99,8 +99,8 @@
             <i class="fas fa-ellipsis-v"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" *ngIf="item.estado=='Inactivo'">Activar</a>
-            <a class="dropdown-item" *ngIf="item.estado=='Activo'">Desactivar</a>
+            <a class="dropdown-item" *ngIf="item.estado=='Inactivo'" (click)="changeState(item)">Activar</a>
+            <a class="dropdown-item" *ngIf="item.estado=='Activo'" (click)="changeState(item)">Desactivar</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" data-toggle="modal" data-target="#modalDetalleVehiculo" (click)=setObjVehiculo(item.idVehiculo)>Detalles</a>
           </div>
