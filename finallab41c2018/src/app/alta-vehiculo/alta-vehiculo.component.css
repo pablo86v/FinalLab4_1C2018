@@ -1,0 +1,17 @@
+.invalid{
+    color: red;
+    font-size: smaller;
+}
+
+
+.dominio{
+    text-transform: uppercase;
+}
+
+.label-foto{
+    white-space: nowrap; 
+    /* width: 50px;  */
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    /* border: 1px solid #000000; */
+}

@@ -25,11 +25,15 @@ export class VehiculosComponent implements OnInit {
   availablePageSizes : number[] = environment.availablePageSizes;
 
 
-  constructor(public dataService:DataService,public pagerService : PagerService) { }
+  constructor(public dataService:DataService,public pagerService : PagerService) { 
+
+   }
 
   ngOnInit() {
     this.getVistaVehiculos();
     this.getPageSize();
+    
+
   }
 
   setPage(page: number) {
@@ -66,7 +70,7 @@ export class VehiculosComponent implements OnInit {
   changeState(event,objVehiculo){
 
 
-    if( confirm("¿Desea modificar el estado de del vehiculo #" + objVehiculo.idVehiculo + "?" )){
+    if( confirm("¿Desea modificar el estado del vehiculo #" + objVehiculo.idVehiculo + "?" )){
       let estado = objVehiculo.estado ;
       //invierto el estado 
       objVehiculo.estado = estado == "Activo" ? "Inactivo" : "Activo"
@@ -119,5 +123,12 @@ export class VehiculosComponent implements OnInit {
     }
     
   }  
+
+ 
+  altaVehiculo()
+  {
+    
+  }
+
 
 }

@@ -55,8 +55,8 @@ export class ModalElegirVehiculoComponent implements OnInit {
     // cantPuertas;utilitario;aireAcondicionado
     let aComodidades = this.objViaje.comodidades.split(";");
     if (aComodidades[0]!="Indistinto") this.txtPuertas = "Puertas: "+ aComodidades[0];
-    aComodidades[1]=="si"? this.chkUtilitario = true : this.chkUtilitario = false;
-    aComodidades[2]=="si"? this.chkAireAcond = true : this.chkAireAcond = false;
+    aComodidades[1]=="true"? this.chkUtilitario = true : this.chkUtilitario = false;
+    aComodidades[2]=="true"? this.chkAireAcond = true : this.chkAireAcond = false;
     
     if (this.seleccionable){
       this.chkUtilitarioDisabled= false;

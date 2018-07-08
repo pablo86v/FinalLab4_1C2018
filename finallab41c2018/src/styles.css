@@ -4,3 +4,11 @@ h4 {
     font-size: 250%!important;
 }
 
+.marco{
+    color: #000;
+    background-color: transparent;
+    background-image: none;
+    border-color: #000;
+    border: solid 1px #000000;
+    border-radius: 5px!important;
+}

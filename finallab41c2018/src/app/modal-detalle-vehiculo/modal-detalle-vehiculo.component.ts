@@ -39,7 +39,12 @@ export class ModalDetalleVehiculoComponent implements OnInit {
   }
 
   setControls(auto : Vehiculo){
-    if(auto.aireAcondicionado == "si") this.aireAcondicionado = true;
+    if(auto.aireAcondicionado == "true") {
+      this.aireAcondicionado = true;
+    }else{
+       this.aireAcondicionado = false;
+     }
+
     this.cantPuertas = auto.cantPuertas ;
     this.modelo = auto.modelo;
     this.anio= auto.anio;
@@ -52,9 +57,10 @@ export class ModalDetalleVehiculoComponent implements OnInit {
                  // console.log(data) 
                 },
         err => console.error(err)
-      )
-
-
+      );
   }
+
+  
+
 
 }

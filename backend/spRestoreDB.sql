@@ -75,40 +75,40 @@ BEGIN
 		medioPago          varchar(2)   null  -- EF efectivo  o  CC cuenta corriente 
 	);
 
-	insert into tbViajes values (1,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (2,2,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","29/05/2018","CC");
-	insert into tbViajes values (3,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","30/05/2018","CC");
-	insert into tbViajes values (4,2,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","31/05/2018","CC");
-	insert into tbViajes values (5,2,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","01/06/2018","CC");
-	insert into tbViajes values (6,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","02/06/2018","CC");
-	insert into tbViajes values (7,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
-	insert into tbViajes values (8,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
-	insert into tbViajes values (9,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
-	insert into tbViajes values (10,2,2,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
-	insert into tbViajes values (11,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (12,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (13,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (14,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (15,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (16,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (17,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (18,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (19,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (20,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (21,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (22,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (23,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (24,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (25,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (26,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (27,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (28,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (29,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (30,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (31,1,1,"","Realizado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
-	insert into tbViajes values (32,null,2,"3;si;no","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","05/06/2018","CC");
-	insert into tbViajes values (33,null,2,"","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","06/06/2018","CC");
-	insert into tbViajes values (34,null,2,"5;no;si","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977", "0" ,"30/06/2018","");
+	insert into tbViajes values (1, 1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (2, 2   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","29/05/2018","CC");
+	insert into tbViajes values (3, 1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","30/05/2018","CC");
+	insert into tbViajes values (4, 2   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","31/05/2018","CC");
+	insert into tbViajes values (5, 2   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","01/06/2018","CC");
+	insert into tbViajes values (6, 2   ,2,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","02/06/2018","CC");
+	insert into tbViajes values (7, 2   ,2,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
+	insert into tbViajes values (8, 2   ,2,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
+	insert into tbViajes values (9, 2   ,2,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
+	insert into tbViajes values (10,2	,2,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","04/06/2018","CC");
+	insert into tbViajes values (11,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (12,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (13,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (14,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (15,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (16,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (17,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (18,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (19,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (20,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (21,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (22,1	,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (23,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (24,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (25,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (26,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (27,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (28,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (29,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (30,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (31,1   ,1,""			 ,"Realizado" ,"Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8735164,-58.39081050000004","-34.8596204,-58.38794330000002","70,00","28/05/2018","CC");
+	insert into tbViajes values (32,null,2,"3;true;false","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","05/06/2018","CC");
+	insert into tbViajes values (33,null,2,""		     ,"Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977","60,00","06/06/2018","CC");
+	insert into tbViajes values (34,null,2,"5;false;true","Solicitado","Alvear 1775, Longchamps","Av. la Aviacion 749, Longchamps","-34.8807595,-58.39546589999998","-34.881401,-58.38977", "0" ,"30/06/2018","");
 	
 	-- ****************************************** CTAS CORRIENTES *****************************************************
 	create table tbCtasCorrientes (
@@ -125,20 +125,22 @@ BEGIN
 	-- ****************************************** VEHICULOS *********************************************************
 	create table tbVehiculos (
 		idVehiculo         int          unsigned auto_increment primary key,
-		idEmpleado         int          not null, -- id del chofer
-		estado             varchar(20)  not null, -- activo o inactivo 
+		idEmpleado         int          null, -- id del chofer
 		modelo		       varchar(20)  not null, -- por ej  Renault Sandero 
 		anio               varchar(4)   null,
 		color              varchar(20)  not null, -- utilizar enumerados en F.E
 		dominio            varchar (20) not null, -- chapa patente
 		cantPuertas        varchar(2)   not null, -- 3 o 5
-		utilitario         varchar(2)   not null, -- si/no
-		aireAcondicionado  varchar(2)   not null  -- si/no
+		utilitario         varchar(20)   not null, -- true/false
+		aireAcondicionado  varchar(20)   not null,  -- true/false
+		estado             varchar(20)  not null, -- activo o inactivo 
+		foto               varchar(200) null
 	);
-	insert into tbVehiculos values (1,2,"activo","Renault Clio","2014","Rojo","OLF 948","5","no","si");
-	insert into tbVehiculos values (2,3,"activo","Renault Kangoo","2016","Negro","PAK 455","3","si","no");
-	insert into tbVehiculos values (3,3,"activo","Renault Kangoo","2012","Blanco","PAK 455","3","si","no");
- 
+	
+	insert into tbVehiculos values (1,2,"Renault Clio"  ,"2014","Rojo"  ,"OLF948","5","false","true"  ,"Activo"   , "");
+	insert into tbVehiculos values (2,3,"Renault Kangoo","2016","Negro" ,"PAK455","3","true" ,"false" ,"Activo"   , "");
+	insert into tbVehiculos values (3,4,"Renault Kangoo","2012","Blanco","SRU767","3","true" ,"false" ,"Inactivo" , "");
+	
 	
 END$$
 

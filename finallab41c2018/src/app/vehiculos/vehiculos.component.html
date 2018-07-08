@@ -5,8 +5,12 @@
   <div class="d-none d-sm-block">
 
     <div class="row sticky-top mt-4 p-0">
+
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-border text-center">
         <h4 align="center">Vehículos</h4>
+        <button class="btn btn-secondary btn-sm my-fab " type="button" routerLink="/alta-vehiculo">
+          <i class="material-icons">add</i>
+        </button>
         <div class="row align-center row-mostrar  m-0 p-0">
           <div class="col text-center">
             <div class="dropdown">
@@ -99,15 +103,34 @@
             <i class="fas fa-ellipsis-v"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" *ngIf="item.estado=='Inactivo'" (click)="changeState(item)">Activar</a>
-            <a class="dropdown-item" *ngIf="item.estado=='Activo'" (click)="changeState(item)">Desactivar</a>
+            <a class="dropdown-item" *ngIf="item.estado=='Inactivo'" (click)="changeState($event,item)">Activar</a>
+            <a class="dropdown-item" *ngIf="item.estado=='Activo'" (click)="changeState($event,item)">Desactivar</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" data-toggle="modal" data-target="#modalDetalleVehiculo" (click)=setObjVehiculo(item.idVehiculo)>Detalles</a>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- FAB -->
+    <div class="menu pmd-floating-action" role="navigation">
+      <a class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-default" routerLink="/alta-vehiculo">
+        <i class="material-icons">add</i>
+      </a>
+      <a href="#" class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-default" >
+          <img  src="../assets/icons/excel.png" class="mt-2" width="23" height="24" />
+      </a>
+      <a class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-default">
+        <i class="material-icons">picture_as_pdf</i>
+      </a>
+      <a class="pmd-floating-action-btn btn        pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-secondary my-fab " data-title>
+        <i class="material-icons rotate" style="color:#fff">expand_more</i>
+      </a>
+    </div>
+
+
   </div>
+
 
   <!-- **********************  PAGER  ******************************
     ****************************************************************** -->
@@ -141,9 +164,8 @@
     </div>
   </div>
 
-</div><!-- container -->
-
-
+</div>
+<!-- container -->
 
 
 <!-- ***************  MODAL DETALLE VEHICULO  ****************

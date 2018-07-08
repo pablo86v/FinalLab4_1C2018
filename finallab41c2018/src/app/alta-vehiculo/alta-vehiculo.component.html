@@ -1,0 +1,127 @@
+<div class="container" align="center">
+
+
+  <div class="jumbotron mt-5 p-4">
+    <h1 class="display-4">Alta de vehículo</h1>
+    <form [formGroup]="frmAltaVehiculo" (ngSubmit)="confirmar()">
+      <div class="row ">
+        <div class="col">
+
+          <!-- Imagen -->
+          <div class="marco p-2">
+            <img src={{imgVehiculo}} class="img-fluid " alt="Responsive image">
+          </div>
+          <div class="input-group mt-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile04" (change)="selectedFile($event)" ng2FileSelect [uploader]="uploader" formControlName="foto">
+              <label class="custom-file-label label-foto" for="inputGroupFile04">{{labelInputFile}}</label>
+            </div>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="subirFoto()">Subir</button>
+            </div>
+            <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('foto').invalid">Tipo de archivo inválido, utilice imagenes en PNG o JPG.</span>
+            <!-- <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('dominio').errors?.required && frmAltaVehiculo.get('foto').touched">Por favor ingrese un dominio antes de elegir imagen.</span> -->
+            <div class="progress col-12 m-1">
+              <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" [ngStyle]="{'width':uploader.progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{uploader.progress}}</div>
+            </div>
+          </div>
+
+          <!-- idEmpleado -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Código de chofer</span>
+            </div>
+            <input type="number" class="form-control" formControlName="idEmpleado">
+            <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('idEmpleado').errors?.min">Debe ser valor númerico mayor a cero.</span>
+          </div>
+
+          <!-- Modelo -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Modelo</span>
+            </div>
+            <input type="text" class="form-control" formControlName="modelo">
+            <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('modelo').errors?.required && frmAltaVehiculo.get('modelo').touched">Campo obligatorio.</span>
+          </div>
+
+          <!-- Año -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Año</span>
+            </div>
+            <input type="number" class="form-control" formControlName="anio">
+            <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('anio').errors?.required && frmAltaVehiculo.get('anio').touched">Campo obligatorio.</span>
+            <span class="invalid m-1" *ngIf="(frmAltaVehiculo.get('anio').errors?.min || frmAltaVehiculo.get('anio').errors?.max) && frmAltaVehiculo.get('anio').touched  ">
+              Valor fuera de rango.Debe ser 1980 a 2018</span>
+          </div>
+
+          <!-- Color -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Color</span>
+            </div>
+            <input type="text" class="form-control" formControlName="color">
+            <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('color').errors?.required && frmAltaVehiculo.get('color').touched">Campo obligatorio.</span>
+          </div>
+
+          <!-- Dominio -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Dominio</span>
+            </div>
+            <input type="text" class="form-control dominio" formControlName="dominio">
+            <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('dominio').errors?.required && frmAltaVehiculo.get('dominio').touched">Campo obligatorio.</span>
+            <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('dominio').errors?.formato && frmAltaVehiculo.get('dominio').touched">Formato de dominio inválido.</span>
+          </div>
+
+          <!-- Combo CANTIDAD DE PUERTAS -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cantidad de puertas</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" (click)="setCantPuertas('3')">3 puertas</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" (click)="setCantPuertas('5')">5 puertas</a>
+              </div>
+            </div>
+            <input type="text" class="form-control" placeholder='{{txtPuertas}}' readonly style="background-color: white; opacity: 1;"
+              formControlName="cantPuertas">
+            <span class="invalid m-1" *ngIf="frmAltaVehiculo.get('cantPuertas').errors?.required  && frmAltaVehiculo.get('cantPuertas').touched">Campo obligatorio.</span>
+          </div>
+
+          <!-- Checkbox UTILITARIO -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" formControlName="utilitario">
+              </div>
+            </div>
+            <input type="text" class="form-control" placeholder="Camioneta/utilitario" readonly style="background-color: white; opacity: 1;">
+          </div>
+
+          <!-- Checkbox AIRE ACONDICIONADO -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" formControlName="aireAcondicionado">
+              </div>
+            </div>
+            <input type="text" class="form-control" placeholder="Aire Acondicionado" readonly style="background-color: white; opacity: 1;">
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <button class="btn btn btn-outline-secondary mt-5 mr-3" routerLink="/vehiculos">Cancelar</button>
+      <button class="btn btn-secondary mt-5" type="submit" [disabled]="frmAltaVehiculo.invalid">Confirmar</button>
+
+    </form>
+
+  </div>
+
+
+
+
+</div>

@@ -4,7 +4,8 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes }       from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { FileUploadModule } from 'ng2-file-upload';
 
 //Componentes
 import { PrincipalComponent } from './principal/principal.component';
@@ -13,14 +14,11 @@ import { ViajesComponent } from './viajes/viajes.component';
 import { ViajesClientesComponent } from './viajes-clientes/viajes-clientes.component';
 import { ModalElegirVehiculoComponent } from './modal-elegir-vehiculo/modal-elegir-vehiculo.component';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
-
+import { AltaVehiculoComponent } from './alta-vehiculo/alta-vehiculo.component';
+import { ModalDetalleVehiculoComponent } from './modal-detalle-vehiculo/modal-detalle-vehiculo.component';
 
 //Servicios
 import { ValidarAccesoService } from './servicios/validar-acceso.service';
-import { ModalDetalleVehiculoComponent } from './modal-detalle-vehiculo/modal-detalle-vehiculo.component';
-
-
-
 
 
 const appRoutes: Routes = [
@@ -28,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'viajes-clientes'     , component: ViajesClientesComponent ,  canActivate: [ValidarAccesoService]  },
   { path: 'viajes'              , component: ViajesComponent         ,  canActivate: [ValidarAccesoService]  },
   { path: 'vehiculos'           , component: VehiculosComponent      ,  canActivate: [ValidarAccesoService]  },
+  { path: 'alta-vehiculo'       , component: AltaVehiculoComponent      ,  canActivate: [ValidarAccesoService]  },
   { path: '**'                  , component: PrincipalComponent                                              }
 ];
 
@@ -41,7 +40,8 @@ const appRoutes: Routes = [
     ViajesClientesComponent,
     ModalElegirVehiculoComponent,
     VehiculosComponent,
-    ModalDetalleVehiculoComponent
+    ModalDetalleVehiculoComponent,
+    AltaVehiculoComponent,
   ],
   exports: [
     HttpClientModule
@@ -50,6 +50,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
+    FileUploadModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

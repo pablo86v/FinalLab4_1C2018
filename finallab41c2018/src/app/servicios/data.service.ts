@@ -76,6 +76,17 @@ export class DataService {
   }
 
 
+  insert(apiName,obj):  Observable<any> {
+    return this.http.post<boolean>(this.apiURL + apiName + 'insertar',obj, {headers: this.headers})
+    .pipe(
+      tap(data => this.log(apiName + "::insert()")),
+      catchError(this.handleError(apiName + '::insert()',[]))
+    );
+
+  }
+
+
+
 
   // ******************************************************************
   // *********************  FUNCIONES MISC ****************************

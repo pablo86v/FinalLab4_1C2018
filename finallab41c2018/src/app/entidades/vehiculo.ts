@@ -15,10 +15,10 @@ export class Vehiculo{
     public cantPuertas          : string ;
     public utilitario           : string ;
     public aireAcondicionado    : string ;
-
+    public estado               : string ;
+    public foto                 : string ;
 
     constructor (
-        parIdVehiculo        : number,
         parIdEmpleado         : number,
         parModelo		      : string,
         parAnio               : string,
@@ -26,9 +26,12 @@ export class Vehiculo{
         parDominio            : string,
         parCantPuertas        : string,
         parUtilitario         : string,
-        parAireAcondicionado  : string
+        parAireAcondicionado  : string,
+        parEstado             : string,
+        parFoto               : string,
+        parIdVehiculo ?       : number
     ){
-        this.idVehiculo        = parIdVehiculo        ;
+        this.idVehiculo        = parIdVehiculo          ;
         this.idEmpleado         = parIdEmpleado         ;
         this.modelo		        = parModelo		        ;
         this.anio               = parAnio               ;
@@ -37,7 +40,8 @@ export class Vehiculo{
         this.cantPuertas        = parCantPuertas        ;
         this.utilitario         = parUtilitario         ;
         this.aireAcondicionado  = parAireAcondicionado  ;
-
+        this.estado             = parEstado             ;
+        this.foto               = parFoto               ;
     }
 
 }

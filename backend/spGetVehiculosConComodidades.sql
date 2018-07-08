@@ -1,8 +1,8 @@
 
 DELIMITER $$
 
-DROP VIEW IF EXISTS spGetVehiculosConComodidades$$
-CREATE PROCEDURE spGetVehiculosConComodidades(IN cantPuertas varchar(2), IN utilitario varchar(2),IN aireAcondicionado varchar(2))
+DROP PROCEDURE IF EXISTS spGetVehiculosConComodidades$$
+CREATE PROCEDURE spGetVehiculosConComodidades(IN cantPuertas varchar(20), IN utilitario varchar(20),IN aireAcondicionado varchar(20))
 BEGIN
    select *
    from tbVehiculos ve

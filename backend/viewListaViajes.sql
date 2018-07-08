@@ -1,4 +1,7 @@
+ DELIMITER $$
+ 
 
+DROP VIEW IF EXISTS viewListaViajes$$
 CREATE VIEW viewListaViajes
 AS
 	select  vi.idViaje,CONCAT(cl.idCliente," - ",us.apellido,",",us.nombre) as cliente, vi.idVehiculo,vi.fechaViaje,vi.domicilioDest,vi.estado
@@ -7,3 +10,6 @@ AS
 	inner join tbUsuarios us on cl.idUsuario = us.idUsuario
 	order by vi.idViaje desc;
 
+$$
+
+DELIMITER ;
