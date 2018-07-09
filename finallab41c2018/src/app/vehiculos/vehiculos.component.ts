@@ -108,7 +108,7 @@ export class VehiculosComponent implements OnInit {
       this.dataService.getOne(environment.apiVehiculos,idVehiculo).subscribe(
         data => {
             this.objVehiculo = data;
-            console.info(this.objVehiculo);
+            // console.info(this.objVehiculo);
         },
         err => console.error(err)
       )

@@ -12,3 +12,10 @@ h4 {
     border: solid 1px #000000;
     border-radius: 5px!important;
 }
+
+
+.invalid{
+    color: red;
+    font-size: smaller;
+}
+

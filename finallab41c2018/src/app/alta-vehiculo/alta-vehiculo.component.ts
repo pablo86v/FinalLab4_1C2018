@@ -4,6 +4,7 @@ import { DataService } from '../servicios/data.service';
 import { environment } from '../../environments/environment';
 import { FormGroup, FormControl , Validators} from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
+import { Router } from '@angular/router';
 declare var $;
 
 const URL = environment.apiURL + environment.apiVehiculos + "guardar-imagen";
@@ -35,7 +36,7 @@ export class AltaVehiculoComponent implements OnInit {
    });
 
  
-  constructor (public dataService:DataService){
+  constructor (public dataService:DataService, public router : Router){
   
   }
  
@@ -45,6 +46,7 @@ export class AltaVehiculoComponent implements OnInit {
 
   selectedFile($event){
    this.labelInputFile = $event.target.files[0].name;
+   console.log($event.target.files[0]);
  
   }
 
@@ -57,7 +59,6 @@ export class AltaVehiculoComponent implements OnInit {
   }
 
   confirmar(){
-    console.log(this.frmAltaVehiculo);
 
       this.objVehiculo = new Vehiculo(
         this.frmAltaVehiculo.controls["idEmpleado"].value,
@@ -69,14 +70,14 @@ export class AltaVehiculoComponent implements OnInit {
         this.frmAltaVehiculo.controls["utilitario"].value == true ? "true": "false",
         this.frmAltaVehiculo.controls["aireAcondicionado"].value == true ? "true": "false",
         "Activo", //Estado por default
-        this.frmAltaVehiculo.controls["foto"].value
+        this.imgVehiculo
       );
-
-      // console.log(this.objVehiculo);
 
       // insert a la bbdd
       this.dataService.insert(environment.apiVehiculos,this.objVehiculo).subscribe(
-        data => console.log(data),
+        data => {console.log(data)
+          this.router.navigate(['/vehiculos']);
+        },
         err => console.error(err)
       );
     
@@ -93,18 +94,15 @@ export class AltaVehiculoComponent implements OnInit {
     this.uploader.onBeforeUploadItem= (item)=>{item.withCredentials=false}
     this.uploader.onSuccessItem=(response,status)=>{this.imgVehiculo= environment.apiURL + "/assets/img/vehiculos/" + response.file.name}
   
-
     this.uploader.onBeforeUploadItem=(item)=>
     {
-
       // CAMBIAR NOMBRE DEL ARCHIVO A SUBIR
       let aux = item['file'].name;
       let extension = aux.substring(aux.length -4 ,aux.length);
 
-
       item['file'].name = this.frmAltaVehiculo.value.dominio + extension;
       item.withCredentials = false;
-      console.log(this.frmAltaVehiculo.get('foto').value);
+      // console.log(this.frmAltaVehiculo.get('foto').value);
     }
     
   }

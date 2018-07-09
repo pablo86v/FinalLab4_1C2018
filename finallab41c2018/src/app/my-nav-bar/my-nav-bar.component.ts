@@ -46,7 +46,7 @@ export class MyNavBarComponent implements OnInit {
       {
         // console.log(data);
         this.router.navigate(['home']);
-        this.userType = this.auth.getUsuarioLogueado().tipo;
+        this.userType = this.auth.getUsuarioLogueado().tipoUsuario;
         this.labelUsuario = "Bienvenido, " + this.auth.getUsuarioLogueado().nombre;
         localStorage.setItem("userType",this.userType);
         this.isLogued = this.auth.isLogued();

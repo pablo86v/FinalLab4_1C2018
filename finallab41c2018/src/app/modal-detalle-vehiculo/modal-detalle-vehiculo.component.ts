@@ -17,12 +17,13 @@ export class ModalDetalleVehiculoComponent implements OnInit {
 
   // Atributos para bindeo del html
   aireAcondicionado : boolean = false;
-  cantPuertas : string = "";
-  empleado : string = "";
-  modelo : string = "";
-  anio : string = "";
-  color: string = "";
-  dominio: string = "";
+  cantPuertas       : string = "";
+  empleado          : string = "";
+  modelo            : string = "";
+  anio              : string = "";
+  color             : string = "";
+  dominio           : string = "";
+  foto              : string = "";
 
   constructor(public dataService:DataService) { }
 
@@ -50,6 +51,7 @@ export class ModalDetalleVehiculoComponent implements OnInit {
     this.anio= auto.anio;
     this.color = auto.color;
     this.dominio = auto.dominio;
+    this.foto = auto.foto != ""? auto.foto :"../../assets/placeholders/carPlaceholder2.png" ;
 
     this.dataService.getObjectWithParams(environment.apiEmpleado,auto.idEmpleado).subscribe(
         data => { 

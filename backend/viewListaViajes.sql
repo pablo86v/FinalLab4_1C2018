@@ -1,6 +1,4 @@
- DELIMITER $$
- 
-
+DELIMITER $$
 DROP VIEW IF EXISTS viewListaViajes$$
 CREATE VIEW viewListaViajes
 AS
@@ -11,5 +9,4 @@ AS
 	order by vi.idViaje desc;
 
 $$
-
 DELIMITER ;
