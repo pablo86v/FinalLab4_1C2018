@@ -1,0 +1,34 @@
+@import url('../../../assets/css/grillas.css');
+@import url('../../../assets/css/slider.css');
+
+.more{
+    background-color: #FFFFFF;
+    padding-top:3px;
+}
+
+.chofer{
+    white-space: nowrap; 
+    /* width: 50px;  */
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    /* border: 1px solid #000000; */
+}
+
+.my-fab{
+  background: #343a40;
+  border-color: #343a40;
+}
+
+
+
+.excel-icon:before{
+   background: url('../../../assets/icons/excel.png');
+}
+
+.rotate{
+-webkit-transform: rotate(90deg);
+-moz-transform: rotate(90deg);
+-ms-transform: rotate(90deg);
+-o-transform: rotate(90deg);
+transform: rotate(90deg);
+}

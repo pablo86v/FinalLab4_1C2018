@@ -89,7 +89,7 @@ export class AuthService {
           tokenDecodif.password,
           tokenDecodif.domicilio,
           tokenDecodif.tipo,
-          tokenDecodif.idUsuario);
+          tokenDecodif.id);
   
   }
 
