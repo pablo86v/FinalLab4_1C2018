@@ -47,3 +47,24 @@
 .row-mostrar:after{
     display: none;
 }
+
+
+.btn-radius{
+    border-radius: 48%!important;
+    background: #343a40;
+    border-color: #343a40;
+}
+
+
+.rotate{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.my-fab{
+    background: #343a40;
+    border-color: #343a40;
+}

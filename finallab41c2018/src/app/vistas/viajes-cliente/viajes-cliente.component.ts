@@ -5,14 +5,18 @@ import { DataService } from '../../servicios/data.service';
 import { environment } from '../../../environments/environment';
 import { PagerService } from '../../servicios/pager.service';
 import { Vehiculo } from '../../entidades/vehiculo';
+import { AuthService } from '../../servicios/auth.service';
+import { GlobalFunctionsService } from '../../servicios/global-functions.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 declare var $;
 
 @Component({
   selector: 'app-viajes-clientes',
-  templateUrl: './viajes-clientes.component.html',
-  styleUrls: ['./viajes-clientes.component.css']
+  templateUrl: './viajes-cliente.component.html',
+  styleUrls: ['./viajes-cliente.component.css']
 })
-export class ViajesClientesComponent implements OnInit {
+export class ViajesClienteComponent implements OnInit {
 
   public aViajes : Array<Viaje>;
   public aItems : Array<any>;
@@ -26,13 +30,18 @@ export class ViajesClientesComponent implements OnInit {
   pageSize : number ;
   availablePageSizes : number[] = environment.availablePageSizes;
 
-  constructor(private route: ActivatedRoute, public dataService: DataService, public pagerService : PagerService) {
+  constructor(private route: ActivatedRoute, public dataService: DataService, public pagerService : PagerService , public auth: AuthService,
+    public gFx : GlobalFunctionsService, public spinner: NgxSpinnerService) {
   }
 
 
   ngOnInit() {
+    this.spinner.show();
     this.getVistaViajes();
     this.getPageSize();
+    setTimeout(() => {
+      this.spinner.hide();
+      }, 1000);
   }
 
   setPage(page: number) {
@@ -41,6 +50,7 @@ export class ViajesClientesComponent implements OnInit {
 
     // get current page of items
     this.pagedItems = this.aItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+ 
   }
 
   changePageSize(newPageSize : number):void{
@@ -57,15 +67,17 @@ export class ViajesClientesComponent implements OnInit {
     }
   }
 
+
   getVistaViajes(): void{
-  this.dataService.getView(environment.apiViajes).subscribe(
-    data => {
-      this.aItems = data
-      // initialize to page 1
-      this.setPage(1);
-    },
-    err => console.error(err)
-  );
+    this.dataService.getAllWithParams(environment.apiViajes,this.auth.getUsuarioLogueado().idUsuario +";CL").subscribe(
+      data => {
+        this.aItems = data
+        console.log(this.auth.getUsuarioLogueado().idUsuario);
+        // initialize to page 1
+        this.setPage(1);
+      },
+      err => console.error(err)
+    );
   }
 
   // Dado el bindeo desde el modal hacia el objeto, este metodo dispara el ngOnChanges() del modal.
@@ -97,10 +109,24 @@ export class ViajesClientesComponent implements OnInit {
         err => console.error(err)
       );
     }
-
-
-
   }
+
+
+  downloadCSV(){
+    let aux = "Numero de viaje;Coche;Fecha;Destino;Monto;Estado\n";
+
+    this.pagedItems.forEach(element => {
+      aux += element.idViaje + ";" ; 
+      aux += (element.idVehiculo == null? "No asignado" : element.idVehiculo) + ";" ;
+      aux += element.fechaViaje.replace("T"," ") + ";";
+      aux += element.domicilioDest + ";" ;
+      aux += element.monto + ";" ;
+      aux += element.estado + "\n";
+    });
+
+   this.gFx.fileDownload("mis-viajes.csv", aux);
+  
+  } 
 
 
     // Dado el bindeo desde el modal hacia el objeto, este metodo dispara el ngOnChanges() del modal.

@@ -9,11 +9,23 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item" *ngIf="empleado.length > 0">Chofer: {{empleado}}</li>
               <li class="list-group-item" *ngIf="aireAcondicionado">Aire Acondicionado</li>
-              <li class="list-group-item" >Puertas: {{cantPuertas}} </li>
+              <li class="list-group-item" >Baúl grande: {{baul}} </li>
               <li class="list-group-item" >Color: {{color}} </li>
             </ul>
             <div class="card-body">
               <a href="#" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</a>
             </div>
           </div>
-  </div>
+
+  </div> 
+
+
+  <!-- ***************  SPINNER     ****************
+**************************************************************** -->
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+loadingText="Espere..."
+type="timer">
+</ngx-spinner>

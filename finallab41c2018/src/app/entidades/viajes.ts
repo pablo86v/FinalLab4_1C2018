@@ -21,7 +21,7 @@ export class Viaje{
 
 
     constructor(
-                parIdViaje        	:  number,
+
                 parIdVehiculo     	:  number,
                 parIdCliente      	:  number,
                 parComodidades      :  string,
@@ -32,9 +32,10 @@ export class Viaje{
                 parMonto		    :  string, 	
                 parEstado		    :  string, 	
                 parFechaViaje       :  string,
-                parMedioPago        :  string
+                parMedioPago        :  string,
+                parIdViaje?        	:  number
                 ){
-        this.idViaje        	=  parIdViaje          ;
+        if(parIdViaje != null)this.idViaje        	=  parIdViaje          ;
         this.idVehiculo     	=  parIdVehiculo       ;
         this.idCliente          =  parIdCliente        ; 
         this.comodidades        =  parComodidades      ;

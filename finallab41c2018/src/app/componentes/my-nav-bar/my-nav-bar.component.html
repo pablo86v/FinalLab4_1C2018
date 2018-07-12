@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="exCollapsingNavbar">
         <ul class="nav navbar-nav">
             <li class="nav-item" *ngIf="userType=='EN'"><a routerLink="/viajes-encargado" class="nav-link">Viajes</a></li>
-            <li class="nav-item" *ngIf="userType=='CL'"><a routerLink="/viajes-clientes"  class="nav-link">Mis Viajes</a></li>
+            <li class="nav-item" *ngIf="userType=='CL'"><a routerLink="/viajes-cliente"  class="nav-link">Mis Viajes</a></li>
             <li class="nav-item" *ngIf="userType=='CH'"><a routerLink="/viajes-chofer"    class="nav-link">Mis Viajes</a></li>
             <li class="nav-item" *ngIf="userType=='EN'"><a routerLink="/vehiculos"        class="nav-link">Vehículos</a></li>
             <li class="nav-item" *ngIf="userType=='EN'"><a routerLink="/empleados"        class="nav-link">Choferes</a></li>
@@ -50,12 +50,12 @@
             </div>
             <div class="modal-body">
                 <form class="form" role="form" >
-                    Login via
+                    <!-- Login via
                     <div class="social-buttons">
                         <a routerLink="/home" class="btn btn-block btn-google">
                             <i class="fab fa-google"></i> Google</a>
                     </div>
-                    or
+                    or -->
                     <div class="form-group">
                         <input id="emailInput" name="emailInput" placeholder="Email" class="form-control form-control-sm" type="email" [(ngModel)]="emailInput" email  >                    
                     </div>
@@ -80,7 +80,8 @@
                     </div>
                     <div class="form-group text-center">
                         <small>
-                            <a routerLink="/contacto" data-dismiss="modal">Olvidó su clave?</a>
+                            <!-- <a routerLink="/principal" data-dismiss="modal">Olvidó su clave?</a> -->
+                            <!-- <a routerLink="/resistro" data-dismiss="modal">Registrarse</a> -->
                         </small>
                     </div>
                 </form>

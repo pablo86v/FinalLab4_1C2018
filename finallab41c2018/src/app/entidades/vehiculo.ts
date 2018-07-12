@@ -12,7 +12,7 @@ export class Vehiculo{
     public anio                 : string ;
     public color                : string ;
     public dominio              : string ;
-    public cantPuertas          : string ;
+    public baul          : string ;
     public utilitario           : string ;
     public aireAcondicionado    : string ;
     public estado               : string ;
@@ -24,7 +24,7 @@ export class Vehiculo{
         parAnio               : string,
         parColor              : string,
         parDominio            : string,
-        parCantPuertas        : string,
+        parBaul        : string,
         parUtilitario         : string,
         parAireAcondicionado  : string,
         parEstado             : string,
@@ -37,7 +37,7 @@ export class Vehiculo{
         this.anio               = parAnio               ;
         this.color              = parColor              ;
         this.dominio            = parDominio            ;
-        this.cantPuertas        = parCantPuertas        ;
+        this.baul               = parBaul        ;
         this.utilitario         = parUtilitario         ;
         this.aireAcondicionado  = parAireAcondicionado  ;
         this.estado             = parEstado             ;

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../servicios/data.service';
 import { environment} from '../../../environments/environment';
 import { PagerService } from '../../servicios/pager.service';
+import { GlobalFunctionsService } from '../../servicios/global-functions.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-empleados',
@@ -20,11 +23,15 @@ export class EmpleadosComponent implements OnInit {
   availablePageSizes : number[] = environment.availablePageSizes;
 
 
-  constructor(public dataService:DataService,public pagerService : PagerService) { }
+  constructor(public dataService:DataService,public pagerService : PagerService, public gFx: GlobalFunctionsService,public spinner: NgxSpinnerService) { }
 
-  ngOnInit() {
+  ngOnInit() {  
+    this.spinner.show();
     this.getVistaEmpleados();
     this.getPageSize();
+    setTimeout(() => {
+      this.spinner.hide();
+      }, 1000);
   }
 
   setPage(page: number) {
@@ -61,7 +68,21 @@ export class EmpleadosComponent implements OnInit {
     }
 
 
+    
+  downloadCSV(){
+    let aux = "Numero de empleado;Apellido y nombre;Usuario;Cuil;Telefono\n";
 
+    this.pagedItems.forEach(element => {
+      aux += element.idEmpleado + ";" ; 
+      aux += element.empleado + ";" ; 
+      aux += element.usuario + ";" ; 
+      aux += element.cuil + ";" ; 
+      aux += element.telefono + "\n" ; 
+    });
+
+   this.gFx.fileDownload("empleados.csv", aux);
+  
+  } 
 
 
 

@@ -10,7 +10,8 @@ export const environment = {
   apiViajes:"/viaje/",
   apiVehiculos:"/vehiculo/",
   apiUsuario:"/usuario/",
-  apiEmpleado: "/empleado/"
+  apiEmpleado: "/empleado/",
+  apiPDF: "/fpdf/getPDF.php"
 };
 
 /*

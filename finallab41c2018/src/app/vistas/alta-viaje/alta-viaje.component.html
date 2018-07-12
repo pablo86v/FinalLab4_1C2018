@@ -1,83 +1,88 @@
 <div class="container" align="center">
 
 
-    <div class="jumbotron mt-5 p-4">
-      <h1 class="display-4">Nuevo viaje</h1>
-      <form [formGroup]="frmNuevoViaje" (ngSubmit)="confirmar()">
-        <div class="row ">
-          <div class="col">
-  
-            <!-- domicilioOrig -->
-            <div class="input-group mt-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Domicilio origen</span>
-              </div>
-              <input type="text" class="form-control" formControlName="domicilioOrig">
-              <span class="invalid m-1" *ngIf="frmNuevoViaje.get('domicilioOrig').errors?.required && frmNuevoViaje.get('domicilioOrig').touched">Campo obligatorio.</span>
-            </div>
-  
-            <!-- domicilioDest -->
-            <div class="input-group mt-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Domicilio destino</span>
-              </div>
-              <input type="text" class="form-control" formControlName="domicilioDest">
-              <span class="invalid m-1" *ngIf="frmNuevoViaje.get('domicilioDest').errors?.required && frmNuevoViaje.get('domicilioDest').touched">Campo obligatorio.</span>
-            </div>
-  
-            <!-- fecha y hora -->
-            <div class="input-group mt-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Fecha y hora</span>
-              </div>
-              <input type="datetime-local" class="form-control" formControlName="fechahora">
-              <span class="invalid m-1" *ngIf="frmNuevoViaje.get('fechahora').errors?.required && frmNuevoViaje.get('fechahora').touched">Campo obligatorio.</span>
-            </div>
-  
+  <div class="jumbotron mt-5 p-4">
+    <h1 class="display-4">{{txtTitulo}}</h1>
+    <form [formGroup]="frmNuevoViaje" (ngSubmit)="confirmar()">
+      <div class="row ">
+        <div class="col">
 
-            <!-- <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
-                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-  
-            <!-- Combo medio de pago -->
-            <div class="input-group mt-3">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Medio de pago</button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" (click)="setMedioPago('EF')">Efectivo</a>
-                  <div role="separator" class="dropdown-divider"></div>
-                  <a class="dropdown-item" (click)="setMedioPago('CC')">Cuenta corriente</a>
-                </div>
-              </div>
-              <input type="text" class="form-control" placeholder='{{txtMedioPago}}' readonly style="background-color: white; opacity: 1;"
-                formControlName="medioPago">
-              <span class="invalid m-1" *ngIf="frmNuevoViaje.get('medioPago').errors?.required  && frmNuevoViaje.get('medioPago').touched">Campo obligatorio.</span>
+          <!-- domicilioOrig -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text d-none  d-sm-block">Domicilio origen</span>
+              <span class="input-group-text d-block d-sm-none">Origen</span>
             </div>
-
-  
-  
+            <!-- <input type="text" class="form-control" formControlName="domicilioOrig"> -->
+            <input type="text" class="form-control" id="domicilioOrig" formControlName="domicilioOrig" name="domicilioOrig" placeholder="Ingrese calle y altura" autocorrect="off" autocapitalize="off" pellcheck="off" #search>
+            <span class="invalid m-1" *ngIf="frmNuevoViaje.get('domicilioOrig').errors?.required && frmNuevoViaje.get('domicilioOrig').touched">Campo obligatorio.</span>
           </div>
+
+          <!-- domicilioDest -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text d-none  d-sm-block">Domicilio destino</span>
+              <span class="input-group-text d-block d-sm-none">Destino</span>
+            </div>
+            <!-- <input type="text" class="form-control" formControlName="domicilioDest"> -->
+            <input type="text" class="form-control" id="domicilioDest" formControlName="domicilioDest" name="domicilioDest" placeholder="Ingrese calle y altura" autocorrect="off" autocapitalize="off" pellcheck="off" #searchDestino>
+            <span class="invalid m-1" *ngIf="frmNuevoViaje.get('domicilioDest').errors?.required && frmNuevoViaje.get('domicilioDest').touched">Campo obligatorio.</span>
+          </div>
+
+          <!-- fecha y hora -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text  d-none  d-sm-block">Fecha y hora</span>
+              <span class="input-group-text d-block d-sm-none">
+                <i class="fas fa-calendar-alt"></i>
+              </span>
+            </div>
+            <input type="datetime-local" class="form-control" formControlName="fechaViaje" s>
+            <span class="invalid m-1" *ngIf="frmNuevoViaje.get('fechaViaje').errors?.required && frmNuevoViaje.get('fechaViaje').touched">Campo obligatorio.</span>
+          </div>
+
+
+          <!-- Combo medio de pago -->
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Medio de pago</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" (click)="setMedioPago('EF')">Efectivo</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" (click)="setMedioPago('CC')">Cuenta corriente</a>
+              </div>
+            </div>
+            <input type="text" class="form-control" [value]="this.frmNuevoViaje.get('medioPago').value" readonly style="background-color: white; opacity: 1;"
+              formControlName="medioPago">
+            <span class="invalid m-1" *ngIf="frmNuevoViaje.get('medioPago').errors?.required && frmNuevoViaje.get('medioPago').touched">Campo obligatorio.</span>
+          </div>
+
+
+          <!-- Preferencias -->
+          <button type="button" class="btn btn-secondary btn-lg btn-block mt-3 mb-3 d-none  d-sm-block" data-toggle="modal" data-target="#modalVehiculo" > <i class="fas fa-car mr-2"></i>Preferencias del vehículo</button>
+          <button type="button" class="btn btn-secondary btn-lg btn-block mt-3 mb-3 d-block d-sm-none" data-toggle="modal" data-target="#modalVehiculo"> <i class="fas fa-car mr-2"></i></button>
   
+          <!-- CAPTCHA -->
+          <re-captcha  formControlName="captcha" site_key="6LfFAikUAAAAAM_bhv-vlKeeru81FoD-FREH5j4_"></re-captcha>
+          <span class="invalid m-1" *ngIf="frmNuevoViaje.get('captcha').errors?.required && frmNuevoViaje.get('captcha').touched">Campo obligatorio.</span>
         </div>
-  
-        <button class="btn btn btn-outline-secondary mt-5 mr-3" routerLink="/viajes-cliente">Cancelar</button>
-        <button class="btn btn-secondary mt-5" type="submit" [disabled]="frmNuevoViaje.invalid">Confirmar</button>
-  
-      </form>
-  
-    </div>
-  
-  
-  
-  
+
+      </div>
+
+      <button class="btn btn btn-outline-secondary mt-4 mr-3" routerLink="/viajes-cliente">Cancelar</button>
+      <button class="btn btn-secondary mt-4" type="submit" [disabled]="frmNuevoViaje.invalid">Confirmar</button>
+
+    </form>
+
   </div>
+
+
+
+
+</div>
+
+
+
+<!-- ***************  MODAL SELECCION VEHICULO  ****************
+**************************************************************** -->
+<app-modal-elegir-vehiculo [objViaje]=objViaje [seleccionable]=true (returnComodities)="setComodidades($event)"></app-modal-elegir-vehiculo>

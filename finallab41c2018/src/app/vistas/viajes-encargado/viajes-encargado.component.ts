@@ -6,6 +6,8 @@ import { environment } from '../../../environments/environment';
 import { PagerService } from '../../servicios/pager.service';
 import { Vehiculo } from '../../entidades/vehiculo';
 import { AuthService } from '../../servicios/auth.service';
+import { GlobalFunctionsService } from '../../servicios/global-functions.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-viajes-encargado',
@@ -19,6 +21,8 @@ export class ViajesEncargadoComponent implements OnInit {
   public objViaje : Viaje;
   public objVehiculo : Vehiculo;
   public userType: string;
+  public txtFiltroEstado : string; 
+
 
   //Atributos para paginado
   pager: any = {};
@@ -26,14 +30,19 @@ export class ViajesEncargadoComponent implements OnInit {
   pageSize : number ;
   availablePageSizes : number[] = environment.availablePageSizes;
 
-  constructor(private route: ActivatedRoute, public dataService: DataService, public pagerService : PagerService, public auth : AuthService) {
+  constructor(private route: ActivatedRoute, public dataService: DataService, public pagerService : PagerService, public auth : AuthService, 
+    public gFx : GlobalFunctionsService, public spinner: NgxSpinnerService) {
   }
 
 
   ngOnInit() {
+    this.spinner.show();
     this.userType = this.auth.getUsuarioLogueado().tipoUsuario; 
     this.getVistaViajes();
     this.getPageSize();
+    setTimeout(() => {
+      this.spinner.hide();
+      }, 1000);
   }
 
   setPage(page: number) {
@@ -56,6 +65,22 @@ export class ViajesEncargadoComponent implements OnInit {
     }else{
       this.pageSize = Number(localStorage.getItem("pageSize"));
     }
+  }
+
+  filtrar(event :any){
+      // if the value is an empty string don't filter the items
+      let filtro = event.target.value;
+
+      if ( filtro.trim() != "")
+      {
+           this.pagedItems = this.aItems.filter((item) => {
+            return (item.cliente.trim().toLowerCase().indexOf(filtro.toLocaleLowerCase())>-1);
+         });
+
+      }else{
+        this.ngOnInit();
+      }
+     
   }
 
   getVistaViajes(): void{
@@ -92,6 +117,23 @@ export class ViajesEncargadoComponent implements OnInit {
     )
   }
   
+
+  downloadCSV(){
+    let aux = "Numero de viaje;Cliente;Numero vehiculo;Fecha-hora; Destino;Estado\n";
+
+    this.pagedItems.forEach(element => {
+      aux += element.idViaje + ";" ; 
+      aux += element.cliente + ";" ; 
+      aux += (element.idVehiculo == null? "No asignado" : element.idVehiculo) + ";" ;
+      aux += element.fechaViaje.replace("T"," ") + ";";
+      aux += element.domicilioDest + ";" ;
+      aux += element.estado + "\n";
+    });
+
+   this.gFx.fileDownload("viajes.csv", aux);
+  
+  } 
+
 
   getColorByState(estado: string):string{
     let color : string = "";

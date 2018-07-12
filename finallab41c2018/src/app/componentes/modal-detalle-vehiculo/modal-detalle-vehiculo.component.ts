@@ -3,6 +3,7 @@ import { Vehiculo } from '../../entidades/vehiculo';
 import { DataService } from '../../servicios/data.service';
 import { Empleado } from '../../entidades/empleado';
 import { environment } from '../../../environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-modal-detalle-vehiculo',
@@ -17,7 +18,7 @@ export class ModalDetalleVehiculoComponent implements OnInit {
 
   // Atributos para bindeo del html
   aireAcondicionado : boolean = false;
-  cantPuertas       : string = "";
+  baul       : string = "";
   empleado          : string = "";
   modelo            : string = "";
   anio              : string = "";
@@ -25,16 +26,20 @@ export class ModalDetalleVehiculoComponent implements OnInit {
   dominio           : string = "";
   foto              : string = "";
 
-  constructor(public dataService:DataService) { }
+  constructor(public dataService:DataService,public spinner: NgxSpinnerService) { }
 
   ngOnInit() {
- 
+    
   }
 
   ngOnChanges(){
 
     if(this.objVehiculo != null) {
+      this.spinner.show();
       this.setControls(this.objVehiculo);
+      setTimeout(() => {
+        this.spinner.hide();
+        }, 1000);
     }
 
   }
@@ -46,7 +51,7 @@ export class ModalDetalleVehiculoComponent implements OnInit {
        this.aireAcondicionado = false;
      }
 
-    this.cantPuertas = auto.cantPuertas ;
+    this.baul = auto.baul == "true" ? "si" : "no" ;
     this.modelo = auto.modelo;
     this.anio= auto.anio;
     this.color = auto.color;

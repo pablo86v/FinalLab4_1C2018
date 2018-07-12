@@ -1,11 +1,11 @@
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS spGetVehiculosConComodidades$$
-CREATE PROCEDURE spGetVehiculosConComodidades(IN cantPuertas varchar(20), IN utilitario varchar(20),IN aireAcondicionado varchar(20))
+CREATE PROCEDURE spGetVehiculosConComodidades(IN baul varchar(20), IN utilitario varchar(20),IN aireAcondicionado varchar(20))
 BEGIN
    select *
    from tbVehiculos ve
-   where ve.cantPuertas = cantPuertas and ve.utilitario = utilitario and ve.aireAcondicionado = aireAcondicionado;
+   where ve.baul = baul and ve.utilitario = utilitario and ve.aireAcondicionado = aireAcondicionado;
 
 END$$
 DELIMITER ;

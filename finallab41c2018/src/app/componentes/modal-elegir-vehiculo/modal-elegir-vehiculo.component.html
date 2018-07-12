@@ -9,6 +9,16 @@
         <p *ngIf="seleccionable==true">Comodidades del vehículo</p>
         <p *ngIf="seleccionable==false">Preferencias del cliente</p>
 
+        <!-- Checkbox Baul -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox"   [checked]="chkBaul" (change)="chkBaul = !chkBaul" [disabled]="chkBaulDisabled">
+              </div>
+            </div>
+            <input type="text" class="form-control" placeholder="Baúl grande" disabled style="background-color: white; opacity: 1;">
+          </div>  
+
         <!-- Checkbox UTILITARIO -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -29,20 +39,6 @@
           <input type="text" class="form-control" placeholder="Aire Acondicionado" disabled style="background-color: white; opacity: 1;">
         </div>  
 
-        <!-- Combo CANTIDAD DE PUERTAS -->
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  *ngIf="seleccionable==true">Puertas</button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" (click)="setCantPuertas('3')">3 puertas</a>
-              <a class="dropdown-item" (click)="setCantPuertas('5')">5 puertas</a>
-              <div role="separator" class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="setCantPuertas('Indistinto')">Indistinto</a>
-            </div>
-          </div>
-          <input type="text" class="form-control" placeholder='{{txtPuertas}}' disabled style="background-color: white; opacity: 1;">
-        </div>
-
         <!-- Combo VEHICULOS DISPONIBLES -->
         <div class="input-group mb-3" *ngIf="userType=='EN'">
           <div class="input-group-prepend">
@@ -59,9 +55,22 @@
 
       <div class="modal-footer">
         <button class="btn btn btn-outline-secondary"             data-dismiss="modal" aria-hidden="true">Cerrar</button>
-        <button class="btn btn-secondary" data-dismiss="modal" (click)="confirmar(objViaje,idVehiculo)">Confirmar</button>
+        <button class="btn btn-secondary" data-dismiss="modal" (click)="confirmar(objViaje,idVehiculo)" *ngIf="seleccionable==false">Confirmar</button>
+        <button class="btn btn-secondary" data-dismiss="modal" (click)="enviarComodities()" *ngIf="seleccionable==true">Confirmar</button>
       </div> 
     
     </div>
   </div>
+
 </div>
+
+
+  <!-- ***************  SPINNER     ****************
+  **************************************************************** -->
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  loadingText="Espere..."
+  type="timer">
+  </ngx-spinner>

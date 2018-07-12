@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { PagerService } from '../../servicios/pager.service';
 import { AuthService } from '../../servicios/auth.service';
 import { FormGroup, FormControl , Validators} from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-viajes-chofer',
@@ -31,14 +32,18 @@ export class ViajesChoferComponent implements OnInit {
   pageSize : number ;
   availablePageSizes : number[] = environment.availablePageSizes;
 
-  constructor(private route: ActivatedRoute, public dataService: DataService, public pagerService : PagerService , public auth : AuthService) {
+  constructor(private route: ActivatedRoute, public dataService: DataService, public pagerService : PagerService , public auth : AuthService, public spinner: NgxSpinnerService) {
   }
 
 
   ngOnInit() {
+    this.spinner.show();
     this.userType = this.auth.getUsuarioLogueado().tipoUsuario; 
     this.getVistaViajes();
     this.getPageSize();
+    setTimeout(() => {
+    this.spinner.hide();
+    }, 1000);
   }
 
   setPage(page: number) {
@@ -64,7 +69,7 @@ export class ViajesChoferComponent implements OnInit {
   }
 
   getVistaViajes(): void{
-    this.dataService.getAllWithParams(environment.apiViajes,this.auth.getUsuarioLogueado().idUsuario).subscribe(
+    this.dataService.getAllWithParams(environment.apiViajes,this.auth.getUsuarioLogueado().idUsuario + ";CH").subscribe(
       data => {
         this.aItems = data
         console.log(this.auth.getUsuarioLogueado().idUsuario);

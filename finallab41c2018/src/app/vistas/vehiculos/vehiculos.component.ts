@@ -3,6 +3,9 @@ import { Vehiculo } from '../../entidades/vehiculo';
 import { DataService } from '../../servicios/data.service';
 import { environment } from '../../../environments/environment';
 import { PagerService } from '../../servicios/pager.service';
+import { GlobalFunctionsService } from '../../servicios/global-functions.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 declare var $;
 
 @Component({
@@ -25,15 +28,18 @@ export class VehiculosComponent implements OnInit {
   availablePageSizes : number[] = environment.availablePageSizes;
 
 
-  constructor(public dataService:DataService,public pagerService : PagerService) { 
+  constructor(public dataService:DataService,public pagerService : PagerService, public gFx : GlobalFunctionsService, public spinner: NgxSpinnerService) { 
 
    }
 
   ngOnInit() {
+    this.spinner.show();
     this.getVistaVehiculos();
     this.getPageSize();
     
-
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
   }
 
   setPage(page: number) {
@@ -125,10 +131,21 @@ export class VehiculosComponent implements OnInit {
   }  
 
  
-  altaVehiculo()
-  {
-    
-  }
+  
+  downloadCSV(){
+    let aux = "Numero de vehiculo;Chofer;Modelo;Dominio;Estado\n";
+
+    this.pagedItems.forEach(element => {
+      aux += element.idVehiculo + ";" ; 
+      aux += element.chofer + ";" ; 
+      aux += element.modelo + ";" ; 
+      aux += element.dominio + ";" ; 
+      aux += element.estado + "\n";
+    });
+
+   this.gFx.fileDownload("vehiculos.csv", aux);
+  
+  } 
 
 
 }

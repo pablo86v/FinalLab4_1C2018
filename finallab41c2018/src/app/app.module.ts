@@ -6,6 +6,9 @@ import { HttpClientModule }                  from '@angular/common/http';
 import { HttpModule }                        from '@angular/http';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule }                  from 'ng2-file-upload';
+import { NgxSpinnerModule }                  from 'ngx-spinner';
+import { ReCaptchaModule }                   from 'angular2-recaptcha';
+import { AgmCoreModule }                     from '@agm/core';
 
 //Servicios
 import { ValidarAccesoService }              from './servicios/validar-acceso.service';
@@ -17,7 +20,7 @@ import { ModalDetalleVehiculoComponent }     from './componentes/modal-detalle-v
 
 //Vistas principales
 import { PrincipalComponent }                from './vistas/principal/principal.component';
-import { ViajesClientesComponent }           from './vistas/viajes-clientes/viajes-clientes.component';
+import { ViajesClienteComponent }           from './vistas/viajes-cliente/viajes-cliente.component';
 import { ViajesChoferComponent }             from './vistas/viajes-chofer/viajes-chofer.component';
 import { ViajesEncargadoComponent }          from './vistas/viajes-encargado/viajes-encargado.component';
 import { EmpleadosComponent }                from './vistas/empleados/empleados.component';
@@ -25,21 +28,24 @@ import { AltaEmpleadoComponent }             from './vistas/alta-empleado/alta-e
 import { VehiculosComponent }                from './vistas/vehiculos/vehiculos.component';
 import { AltaVehiculoComponent }             from './vistas/alta-vehiculo/alta-vehiculo.component';
 import { AltaViajeComponent }                from './vistas/alta-viaje/alta-viaje.component';
+import { DetalleViajeComponent }             from './vistas/detalle-viaje/detalle-viaje.component';
 
 
 
 
 const appRoutes: Routes = [
-  { path: 'viajes-clientes'     , component: ViajesClientesComponent  ,  canActivate: [ValidarAccesoService]  },
-  { path: 'viajes-encargado'    , component: ViajesEncargadoComponent ,  canActivate: [ValidarAccesoService]  },
-  { path: 'viajes-chofer'       , component: ViajesChoferComponent    ,  canActivate: [ValidarAccesoService]  },
-  { path: 'vehiculos'           , component: VehiculosComponent       ,  canActivate: [ValidarAccesoService]  },
-  { path: 'empleados'           , component: EmpleadosComponent       ,  canActivate: [ValidarAccesoService]  },
-  { path: 'alta-vehiculo'       , component: AltaVehiculoComponent    ,  canActivate: [ValidarAccesoService]  },
-  { path: 'alta-empleado'       , component: AltaEmpleadoComponent    ,  canActivate: [ValidarAccesoService]  },
-  { path: 'alta-viaje'          , component: AltaViajeComponent       ,  canActivate: [ValidarAccesoService]  },
-  { path: 'home'                , component: PrincipalComponent                                               },
-  { path: '**'                  , component: PrincipalComponent                                               }
+  { path: 'viajes-cliente'                 , component: ViajesClienteComponent  ,  canActivate: [ValidarAccesoService]  },
+  { path: 'viajes-encargado'                , component: ViajesEncargadoComponent ,  canActivate: [ValidarAccesoService]  },
+  { path: 'viajes-chofer'                   , component: ViajesChoferComponent    ,  canActivate: [ValidarAccesoService]  },
+  { path: 'vehiculos'                       , component: VehiculosComponent       ,  canActivate: [ValidarAccesoService]  },
+  { path: 'empleados'                       , component: EmpleadosComponent       ,  canActivate: [ValidarAccesoService]  },
+  { path: 'alta-vehiculo'                   , component: AltaVehiculoComponent    ,  canActivate: [ValidarAccesoService]  },
+  { path: 'alta-empleado'                   , component: AltaEmpleadoComponent    ,  canActivate: [ValidarAccesoService]  },
+  // { path: 'alta-viaje'                      , component: AltaViajeComponent       ,  canActivate: [ValidarAccesoService]  },
+  // { path: 'editar-viaje/:idViaje'           , component: AltaViajeComponent       ,  canActivate: [ValidarAccesoService]  },
+  { path: 'detalle-viaje/:idViaje'          , component: DetalleViajeComponent       ,  canActivate: [ValidarAccesoService]  },
+  { path: 'home'                            , component: PrincipalComponent                                               },
+  { path: '**'                              , component: PrincipalComponent                                               }
 ];
 
 
@@ -55,9 +61,10 @@ const appRoutes: Routes = [
     AltaVehiculoComponent,
     AltaEmpleadoComponent,
     ViajesChoferComponent,
-    ViajesClientesComponent,
+    ViajesClienteComponent,
     ViajesEncargadoComponent,
-    AltaViajeComponent,
+    // AltaViajeComponent,
+    DetalleViajeComponent,
   ],
   exports: [
     HttpClientModule
@@ -68,7 +75,15 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     FileUploadModule,
-    RouterModule.forRoot(appRoutes)
+    NgxSpinnerModule,
+    ReCaptchaModule,
+    AgmCoreModule.forRoot({
+      // apiKey: 'AIzaSyC-n6aE38pH9UlyKVrSqxywS9xqfYOxQm0', //pps
+      apiKey: 'AIzaSyCp3OmUot6QK-FqlR7mrpn7mIZ-mvG0K7o', //nico
+      // apiKey: 'AIzaSyBO7ZDunU1O8XG7lQCgPGR5lqcbbxmZIiY',
+      libraries: ["places"]
+}),
+    RouterModule.forRoot(appRoutes,{'useHash': true})
   ],
   providers: [
     

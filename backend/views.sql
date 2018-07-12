@@ -18,11 +18,17 @@ DELIMITER $$
 DROP VIEW IF EXISTS viewListaViajes$$
 CREATE VIEW viewListaViajes
 AS
-	select  vi.idViaje,CONCAT(cl.idCliente," - ",us.apellido,",",us.nombre) as cliente, vi.idVehiculo,vi.fechaViaje,vi.domicilioDest,vi.estado
-	from tbViajes vi inner join tbClientes cl
-	on vi.idCliente = cl.idCliente
-	inner join tbUsuarios us on cl.idUsuario = us.idUsuario
+	-- select  vi.idViaje,CONCAT(cl.idCliente," - ",us.apellido,",",us.nombre) as cliente, vi.idVehiculo,vi.fechaViaje,vi.domicilioDest,vi.estado,vi.monto,vi.medioPago
+	-- from tbViajes vi inner join tbClientes cl
+	-- on vi.idCliente = cl.idCliente
+	-- inner join tbUsuarios us on cl.idUsuario = us.idUsuario
+	-- order by vi.idViaje desc;
+	
+	select  vi.idViaje,CONCAT(vi.idCliente," - ",us.apellido,",",us.nombre) as cliente, vi.idVehiculo,vi.fechaViaje,vi.domicilioDest,vi.estado,vi.monto,vi.medioPago
+	from tbViajes vi inner join tbUsuarios us
+	on vi.idCliente = us.idUsuario
 	order by vi.idViaje desc;
+	
 $$
 DELIMITER ;
 
@@ -40,3 +46,5 @@ AS
 	
 $$
 DELIMITER ;
+
+
