@@ -28,6 +28,17 @@ export class AltaViajeComponent implements OnInit {
   public objViaje : Viaje;
   public idViaje;
   public txtTitulo = "Nuevo viaje";
+
+  public latOrigen;
+  public lngOrigen;
+  public latDestino;
+  public lngDestino;
+  public directionDisplay;
+  public rutasAlternativas = [];
+  public distancia;
+  public tiempoDemora;
+
+
   public frmNuevoViaje = new FormGroup({
     'domicilioOrig': new FormControl ('',Validators.required),
     'domicilioDest': new FormControl ('', Validators.required),
@@ -43,6 +54,10 @@ export class AltaViajeComponent implements OnInit {
   ngOnInit() {
     this.inicializarGooglePlacesOrigen();
     this.inicializarGooglePlacesDestino();
+
+    setTimeout(() => {
+      this.directionDisplay = new google.maps.DirectionsRenderer;
+    }, 2000);
 
     this.route.params.subscribe(params => {
       this.idViaje = params['idViaje'] ;
@@ -194,12 +209,56 @@ export class AltaViajeComponent implements OnInit {
                this.coordenadasDest = place.geometry.location.lat() + "," + place.geometry.location.lng()
                 // this.zoomOrigen = 15;
                 this.frmNuevoViaje.get('domicilioDest').setValue(place.formatted_address);  
+                this.calcularRuta();
               }
             });
         });
       });
   }
 
-  
+  private calcularRuta()
+  {
+
+    let aux = this.coordenadasOrig.split(",");
+    this.latOrigen = aux[0];
+    this.lngOrigen = aux[1];
+
+    aux = this.coordenadasDest.split(",");
+    this.latDestino = aux[0];
+    this.lngDestino = aux[1];
+
+    let self = this;
+    let directionService = new google.maps.DirectionsService;
+    
+    let obj = $("#map")[0];
+
+    let map = new google.maps.Map(obj, {
+      zoom: 6,
+      center: new google.maps.LatLng(this.latOrigen, this.lngOrigen)
+    });
+
+    this.directionDisplay.setMap(map);
+    let origen = new google.maps.LatLng(this.latOrigen, this.lngOrigen);
+    let destino = new google.maps.LatLng(this.latDestino, this.lngDestino);
+
+    directionService.route({
+      origin: origen,
+      destination: destino,
+      provideRouteAlternatives: true,
+      travelMode: google.maps.TravelMode.DRIVING
+    }, 
+    function(response, status)
+    {
+      console.log(response);
+      if(status == google.maps.DirectionsStatus.OK)
+      {
+        self.directionDisplay.setDirections(response);
+        self.rutasAlternativas = response.routes;
+        self.distancia = response.routes[0].legs[0].distance.text;
+        self.tiempoDemora = response.routes[0].legs[0].duration.text;
+        
+      }
+    });
+  }
 
 }

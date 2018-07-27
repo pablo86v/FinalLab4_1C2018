@@ -39,9 +39,7 @@ export class ViajesClienteComponent implements OnInit {
     this.spinner.show();
     this.getVistaViajes();
     this.getPageSize();
-    setTimeout(() => {
-      this.spinner.hide();
-      }, 1000);
+  
   }
 
   setPage(page: number) {
@@ -75,6 +73,9 @@ export class ViajesClienteComponent implements OnInit {
         console.log(this.auth.getUsuarioLogueado().idUsuario);
         // initialize to page 1
         this.setPage(1);
+        setTimeout(() => {
+          this.spinner.hide();
+          }, 1000);
       },
       err => console.error(err)
     );

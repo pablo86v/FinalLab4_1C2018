@@ -37,9 +37,7 @@ export class VehiculosComponent implements OnInit {
     this.getVistaVehiculos();
     this.getPageSize();
     
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 1000);
+  
   }
 
   setPage(page: number) {
@@ -103,6 +101,9 @@ export class VehiculosComponent implements OnInit {
       data => {this.aItems = data;
        // initialize to page 1
        this.setPage(1);      
+       setTimeout(() => {
+        this.spinner.hide();
+      }, 1000);
       },
       err => console.error(err)  
     );

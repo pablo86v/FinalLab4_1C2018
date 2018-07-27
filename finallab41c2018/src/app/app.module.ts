@@ -29,7 +29,7 @@ import { VehiculosComponent }                from './vistas/vehiculos/vehiculos.
 import { AltaVehiculoComponent }             from './vistas/alta-vehiculo/alta-vehiculo.component';
 import { AltaViajeComponent }                from './vistas/alta-viaje/alta-viaje.component';
 import { DetalleViajeComponent }             from './vistas/detalle-viaje/detalle-viaje.component';
-
+ 
 
 
 
@@ -41,8 +41,8 @@ const appRoutes: Routes = [
   { path: 'empleados'                       , component: EmpleadosComponent       ,  canActivate: [ValidarAccesoService]  },
   { path: 'alta-vehiculo'                   , component: AltaVehiculoComponent    ,  canActivate: [ValidarAccesoService]  },
   { path: 'alta-empleado'                   , component: AltaEmpleadoComponent    ,  canActivate: [ValidarAccesoService]  },
-  // { path: 'alta-viaje'                      , component: AltaViajeComponent       ,  canActivate: [ValidarAccesoService]  },
-  // { path: 'editar-viaje/:idViaje'           , component: AltaViajeComponent       ,  canActivate: [ValidarAccesoService]  },
+  { path: 'alta-viaje'                      , component: AltaViajeComponent       ,  canActivate: [ValidarAccesoService]  },
+  { path: 'editar-viaje/:idViaje'           , component: AltaViajeComponent       ,  canActivate: [ValidarAccesoService]  },
   { path: 'detalle-viaje/:idViaje'          , component: DetalleViajeComponent       ,  canActivate: [ValidarAccesoService]  },
   { path: 'home'                            , component: PrincipalComponent                                               },
   { path: '**'                              , component: PrincipalComponent                                               }
@@ -63,7 +63,7 @@ const appRoutes: Routes = [
     ViajesChoferComponent,
     ViajesClienteComponent,
     ViajesEncargadoComponent,
-    // AltaViajeComponent,
+    AltaViajeComponent,
     DetalleViajeComponent,
   ],
   exports: [

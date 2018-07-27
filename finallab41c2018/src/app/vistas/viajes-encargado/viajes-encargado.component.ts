@@ -40,9 +40,7 @@ export class ViajesEncargadoComponent implements OnInit {
     this.userType = this.auth.getUsuarioLogueado().tipoUsuario; 
     this.getVistaViajes();
     this.getPageSize();
-    setTimeout(() => {
-      this.spinner.hide();
-      }, 1000);
+
   }
 
   setPage(page: number) {
@@ -89,6 +87,9 @@ export class ViajesEncargadoComponent implements OnInit {
       this.aItems = data
       // initialize to page 1
       this.setPage(1);
+      setTimeout(() => {
+        this.spinner.hide();
+        }, 1000);
     },
     err => console.error(err)
   );

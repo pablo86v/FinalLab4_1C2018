@@ -29,6 +29,11 @@
             <span class="invalid m-1" *ngIf="frmNuevoViaje.get('domicilioDest').errors?.required && frmNuevoViaje.get('domicilioDest').touched">Campo obligatorio.</span>
           </div>
 
+          <div class="row mt-2 text-center">
+              <div class="col-12 text-center" id="map"></div>
+              <span class="badge badge-secondary col-12">Distancia: {{distancia}} - Duración: {{tiempoDemora}}</span>
+          </div>
+
           <!-- fecha y hora -->
           <div class="input-group mt-3">
             <div class="input-group-prepend">

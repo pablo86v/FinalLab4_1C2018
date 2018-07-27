@@ -41,9 +41,7 @@ export class ViajesChoferComponent implements OnInit {
     this.userType = this.auth.getUsuarioLogueado().tipoUsuario; 
     this.getVistaViajes();
     this.getPageSize();
-    setTimeout(() => {
-    this.spinner.hide();
-    }, 1000);
+ 
   }
 
   setPage(page: number) {
@@ -75,6 +73,9 @@ export class ViajesChoferComponent implements OnInit {
         console.log(this.auth.getUsuarioLogueado().idUsuario);
         // initialize to page 1
         this.setPage(1);
+        setTimeout(() => {
+          this.spinner.hide();
+          }, 1000);
       },
       err => console.error(err)
     );
